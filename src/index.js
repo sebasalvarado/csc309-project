@@ -1,12 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import NavBar from './NavBar';
-import PostNewListing from './PostNewListing';
+import App from './App';
 import './index.css';
 
 render(
-  <NavBar />
-  <PostNewListing />,
+  <App />,
   document.getElementById('root')
 );
