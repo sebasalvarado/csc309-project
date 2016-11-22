@@ -8,11 +8,11 @@ class NavBar extends Component{
 
   render(){
     <NavBar>
-      <Navbar.Brand>
-        <Navbar.Header>
-        </NavBar.Header>
-      </NavBar.Brand>
-
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a href="#"> Share Goods </a>
+        </Navbar.Brand>
+      </NavBar.Header>
       <Nav>
         <NavItem eventKey={1} href="#">Messages</NavIem>
         <NavDropdown eventKey={2} id = "basic-nav-dropdown" title="Actions">
