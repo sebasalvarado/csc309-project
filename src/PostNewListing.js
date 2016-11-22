@@ -18,7 +18,7 @@ class PostNewListing extends Component {
 
   handleSubmit(event) {
     alert('form is created');
-    /*
+
     fetch('https://share-goods.herokuapp.com/users', {
       method: "GET"
     })
@@ -35,10 +35,10 @@ class PostNewListing extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ownerID: this.state.id, item: this.state.item, returnDate: this.state.returnDate, description: this.state.descripton});
+      body: JSON.stringify({ownerID: this.state.id, item: this.state.item, returnDate: this.state.returnDate, description: this.state.descripton})
     });
     this.change(1);
-    */
+
     console.log(this.state.firstName);
     console.log(this.state.lastName);
     console.log(this.state.email);
