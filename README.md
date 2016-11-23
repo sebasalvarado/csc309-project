@@ -7,13 +7,25 @@ The project looks like this
 group4/
   README.md
   package.json
+  web.config.js
   public/
     index.html
   src/
     index.css
-    index.js
-    App.js
-    ... (All other js files that use react)
+    app-client.js (Application Entry Point)
+    routes.js (Defines Routes for every View)
+    server.js (Express Server)
+    components/
+      AppRoutes.js
+      Layout.js
+      HomePage.js
+      ... (All other js files that use react)
+    views/
+      index.ejs (HTML entry point)
+    static/
+      index.html
+      js/
+        bundle.js
 ```
 
 All JS and CSS files are inside `src`
