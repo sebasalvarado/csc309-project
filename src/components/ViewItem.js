@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
 class ViewItem extends Component{
