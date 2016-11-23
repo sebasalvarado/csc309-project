@@ -63,7 +63,7 @@ After you finished working on the project, at the project folder root, you can r
 * 2) Install Postgress
 * 3) Open a terminal
   * 4) type this: PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-  * 5) the, type this: heroku pg:psql --app share-goods
+  * 5) then, type this: heroku pg:psql --app share-goods
   * 6) then you will get connection to database
 
 
