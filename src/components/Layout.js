@@ -9,7 +9,7 @@ class Layout extends Component{
       <div>
         <header>
         </header>
-      <div className>
+      <div>
         <NavigationBar/>
       </div>
       <div>{this.props.children}</div>
