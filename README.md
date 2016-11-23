@@ -57,3 +57,13 @@ The JavaScript file that initializes our app logic is under src/app-client.js
 The default server url is [http://localhost:3000](http://localhost:3000) (usually the browser window will open automatically).
 
 After you finished working on the project, at the project folder root, you can run `npm run build` to build the product version of your web app. This command will generate a `build` folder, which contains all necessary files to start the web app.
+
+How to access DataBase:
+1) Install heroku CLI
+2) Install Postgress
+3) Open a terminal
+  4) type this: PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+  5) the, type this: heroku pg:psql --app share-goods
+  6) then you will get connection to database
+
+
