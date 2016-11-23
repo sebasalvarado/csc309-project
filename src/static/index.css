@@ -37,6 +37,16 @@ body {
   border: 1px solid black;
 }
 
+#itemDetails {
+  font-size: 20px;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 /* CSS styling by class */
 .medium-top-buffer {
   padding-top: 50px;

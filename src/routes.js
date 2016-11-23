@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import PostNewListing from './components/PostNewListing'
 import ViewItem from './components/ViewItem';
+import SearchItem from './components/SearchItem';
 
 
 
@@ -17,6 +18,7 @@ const routes = (
     <IndexRoute component={HomePage}/>
     <Route path="postListing/:id" component={PostNewListing}/>
     <Route path="/" component={ViewItem}/>
+    <Route path="/" component={SearchItem}/>
 
 
 

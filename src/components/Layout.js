@@ -14,8 +14,8 @@ class Layout extends Component{
       </div>
       <div>{this.props.children}</div>
       <footer>
-        <p>
-          This application is a demo project for CSC309 at the University of Toronto. Fall 2016
+        <p id="footer">
+          Application Demo CSC309 Fall 2016 @ University Of Toronto.
         </p>
       </footer>
       </div>
