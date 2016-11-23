@@ -29,9 +29,9 @@ class NavigationBar extends Component{
         <Nav activeKey={this.state.activeKey} onSelect={this.handleSelect}>
           <NavItem eventKey={1} href="#">Messages</NavItem>
           <NavDropdown eventKey={2} id="basic-nav-dropdown" title="Actions">
-            <MenuItem eventKey{2.1}>Add Listing</MenuItem>
-            <MenuItem eventKey{2.2}>View Requests</MenuItem>
-            <MenuItem eventKey{2.3}>Profile</MenuItem>
+            <MenuItem eventKey={2.1}>Add Listing</MenuItem>
+            <MenuItem eventKey={2.2}>View Requests</MenuItem>
+            <MenuItem eventKey={2.3}>Profile</MenuItem>
           </NavDropdown>
           <Navbar.Form pullLeft>
             <FormGroup>
