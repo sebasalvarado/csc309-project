@@ -24,7 +24,7 @@ At the root foler, install the modules
 `npm install`
 
 Build the application with all dependencies. Populates bundle.js
-`npm start`
+`npm build`
 
 Run the application locally. The back-end will not be deployed
 `npm run-script start-dev-single-page`
