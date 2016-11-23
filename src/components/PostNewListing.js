@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Form, FormGroup, FormControl, Col, ControlLabel } from 'react-bootstrap';
 
 class PostNewListing extends Component {
 
