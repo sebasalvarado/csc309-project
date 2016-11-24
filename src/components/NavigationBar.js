@@ -4,10 +4,17 @@ import { Link } from 'react-router';
 import { Navbar,NavItem,FormGroup,FormControl,Button,
     Nav, NavDropdown,MenuItem,
  } from 'react-bootstrap';
+import PostNewListing from './PostNewListing';
 
 class NavigationBar extends Component{
   constructor(){
     super();
+    this.state = {activeKey: 1};
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(eventKey) {
+      this.setState({activeKey: eventKey});
   }
 
   render(){
@@ -18,12 +25,12 @@ class NavigationBar extends Component{
             <a href="#"> Share Goods </a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
+        <Nav activeKey={this.state.activeKey} onSelect={this.handleSelect}>
           <NavItem eventKey={1} href="#">Messages</NavItem>
           <NavDropdown eventKey={2} id="basic-nav-dropdown" title="Actions">
-            <MenuItem>Add Listing</MenuItem>
-            <MenuItem>View Requests</MenuItem>
-            <MenuItem>Profile</MenuItem>
+            <MenuItem eventKey={2.1}><Link to="/postListing">Add Listing</Link></MenuItem>
+            <MenuItem eventKey={2.2}><Link to="/viewRequests">View Requests</Link></MenuItem>
+            <MenuItem eventKey={2.3}><Link to="/profile">Profile</Link></MenuItem>
           </NavDropdown>
           <Navbar.Form pullLeft>
             <FormGroup>
@@ -33,6 +40,7 @@ class NavigationBar extends Component{
           </Navbar.Form>
           <NavItem eventKey={3} href="#"> Log Out </NavItem>
           </Nav>
+          {this.state.activeKey == 2.1 ? <PostNewListing/> : null}
       </Navbar>
     );
   }
