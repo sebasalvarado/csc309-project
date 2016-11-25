@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { Navbar,NavItem,FormGroup,FormControl,Button,
     Nav, NavDropdown,MenuItem,
  } from 'react-bootstrap';
-
 import PostNewListing from './PostNewListing';
 
 class NavigationBar extends Component{
@@ -29,9 +28,9 @@ class NavigationBar extends Component{
         <Nav activeKey={this.state.activeKey} onSelect={this.handleSelect}>
           <NavItem eventKey={1} href="#">Messages</NavItem>
           <NavDropdown eventKey={2} id="basic-nav-dropdown" title="Actions">
-            <MenuItem eventKey={2.1}>Add Listing</MenuItem>
-            <MenuItem eventKey={2.2}>View Requests</MenuItem>
-            <MenuItem eventKey={2.3}>Profile</MenuItem>
+            <MenuItem eventKey={2.1}><Link to="/postListing">Add Listing</Link></MenuItem>
+            <MenuItem eventKey={2.2}><Link to="/viewRequests">View Requests</Link></MenuItem>
+            <MenuItem eventKey={2.3}><Link to="/profile">Profile</Link></MenuItem>
           </NavDropdown>
           <Navbar.Form pullLeft>
             <FormGroup>

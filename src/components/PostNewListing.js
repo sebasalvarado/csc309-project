@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+<<<<<<< HEAD
+=======
 import { Form, FormGroup, FormControl, Col, ControlLabel } from 'react-bootstrap';
+>>>>>>> 60d589fb5dec52210895cdc861e756e4b5d3a7b8
 
 class PostNewListing extends Component {
 
@@ -20,8 +23,12 @@ class PostNewListing extends Component {
 
   handleSubmit(event) {
     alert('form is created');
+<<<<<<< HEAD
+    /*
+=======
 
 
+>>>>>>> 60d589fb5dec52210895cdc861e756e4b5d3a7b8
     fetch('https://share-goods.herokuapp.com/users', {
       method: "GET"
     })
@@ -38,10 +45,17 @@ class PostNewListing extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
+<<<<<<< HEAD
+      body: JSON.stringify({ownerID: this.state.id, item: this.state.item, returnDate: this.state.returnDate, description: this.state.descripton});
+    });
+    this.change(1);
+    */
+=======
       body: JSON.stringify({ownerID: this.state.id, item: this.state.item, returnDate: this.state.returnDate, description: this.state.descripton})
     });
     this.change(1);
 
+>>>>>>> 60d589fb5dec52210895cdc861e756e4b5d3a7b8
     console.log(this.state.firstName);
     console.log(this.state.lastName);
     console.log(this.state.email);
@@ -53,6 +67,25 @@ class PostNewListing extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
+      <form onSubmit={this.handleSubmit}>
+        List your item:
+        First Name:
+        <input type="text" value={this.state.firstName} onChange={this.handleChange('firstName').bind(this)} />
+        Last Name:
+        <input type="text" value={this.state.lastName} onChange={this.handleChange('lastName').bind(this)} />
+        Email:
+        <input type="text" value={this.state.email} onChange={this.handleChange('email').bind(this)} />
+        Item:
+        <input type="text" value={this.state.item} onChange={this.handleChange('item').bind(this)} />
+        Return Date:
+        <input type="text" value={this.state.returnDate} onChange={this.handleChange('returnDate').bind(this)} />
+        Description:
+        <input type="text" value={this.state.description} onChange={this.handleChange('description').bind(this)} />
+
+        <input type="submit" value="Submit" />
+      </form>
+=======
       <Form horizontal onSubmit={this.handleSubmit}>
 
       <FormGroup controlId="formHorizontalFN">
@@ -148,6 +181,7 @@ class PostNewListing extends Component {
       </FormGroup>
 
       </Form>
+>>>>>>> 60d589fb5dec52210895cdc861e756e4b5d3a7b8
     );
   }
 }

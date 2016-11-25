@@ -6,9 +6,6 @@ import HomePage from './components/HomePage';
 import PostNewListing from './components/PostNewListing'
 import ViewItem from './components/ViewItem';
 import SearchItem from './components/SearchItem';
-
-
-
 import NotFoundPage from './components/NotFoundPage';
 
 /*Add Components to this file with their corresponding route as we continue to develop
@@ -16,12 +13,9 @@ import NotFoundPage from './components/NotFoundPage';
 const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={HomePage}/>
-    <Route path="postListing/:id" component={PostNewListing}/>
-    <Route path="/" component={ViewItem}/>
-    <Route path="/" component={SearchItem}/>
-
-
-
+    <Route path="/postListing" component={PostNewListing}/>
+    <Route path="/viewItem" component={ViewItem}/>
+    <Route path="/search" component={SearchItem}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
