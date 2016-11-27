@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from './navigation-bar';
 import NotFoundPage from './not-found-page';
+import ViewItem from './view-item';
 
 
 
@@ -10,18 +11,13 @@ export default class App extends React.Component {
 
         // set states here
 
-
-
     }
-
-
 
     render() {
         return (
             <div>
 
-              <NavigationBar />
-
+              <ViewItem />
 
                 <p id="footer">
 
