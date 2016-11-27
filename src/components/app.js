@@ -23,7 +23,6 @@ export default class App extends React.Component {
               <NavigationBar />
 
 
-
                 <p id="footer">
 
                   Application Demo CSC309 Fall 2016 @ University Of Toronto.
