@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 export default class NotFoundPage extends Component{
-  render(){
+
+  render() {
+
     return(
       <div>
         <h1>404</h1>
@@ -12,5 +14,6 @@ export default class NotFoundPage extends Component{
         </p>
       </div>
     );
+
   }
 }

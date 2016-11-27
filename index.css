@@ -1,0 +1,10 @@
+/* CSS styling by id */
+#footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
+
+/* CSS styling by class name */
