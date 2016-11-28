@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 /* Get the index page */
 app.get('/', function(req, res) {
-    res.sendfile('html/viewitem.html');
+    res.sendfile('html/search-item.html');
 });
 
 /* Define all routes, function implementation in routes.js file */
