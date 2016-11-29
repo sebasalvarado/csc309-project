@@ -7,13 +7,13 @@ import userCtrl from '../controllers/user.controller';
 
 const router = express.Router();
 
-//router.route('/')
+router.route('/')
   /** GET /api/user - Get list of all users */
   //.get(userCtrl.list)
 
   /** POST /api/user - Create a new user */
   //TODO Add VALIDATION TO CREATE A USER
-  //.post(userCtrl.create);
+  .post(userCtrl.create);
 
 router.route('/:userId')
   /** GET /api/user/:userId - Get a user */

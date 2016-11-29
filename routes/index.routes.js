@@ -15,21 +15,21 @@ router.get('/health-check', (req, res) =>
 );
 
 // mount user routes at /user
-router.use('/api/user', userRoutes);
+router.use('/user', userRoutes);
 
 // mount auth routes at /auth
 //router.use('/auth', authRoutes);
 // mount listing routes at /listing
-//router.use('/api/listing', listingRoutes);
+//router.use('/listing', listingRoutes);
 
 // mount request routes at /request
-//router.use('/api/request', requestRoutes);
+//router.use('/request', requestRoutes);
 
 // mount user rating routes at /user/ratings
-//router.use('/api/user/ratings', userRatingRoutes);
+//router.use('user/ratings', userRatingRoutes);
 
 // mount listing rating routes at /listing/ratings
-//router.use('/api/listing/ratings', listingRatingRoutes);
+//router.use('listing/ratings', listingRatingRoutes);
 
 
 export default router;

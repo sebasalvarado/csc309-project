@@ -6,7 +6,11 @@ Run
 `npm install`
 
 Start up the server
-`node server.js`
+`npm run start`
+
+We are using nodemon for reloading when something changes so feel free to make
+changes while the server is running in your local machine.
+
 
 
 
