@@ -23,8 +23,9 @@ Start up the server
 | /api/listing/:listingId| GET| Get a given listing by ID|
 | /api/listing/:listingId| POST | Create a new listing|
 | /api/listing/:listingId| DELETE| Delete a given listing|
+| /api/request | GET | Get all the requests in the system| |
 | /api/request/:requestId| GET | Get a given request info from a user to another|
-| /api/request/:requestId| POST| Create a new rental request|
+| /api/request| POST| Create a new rental request|
 | /api/request/:requestId| DELETE| Delete a given request.| Only administrators|
 | /api/user/ratings/:ratingId| GET | Get the rating given to a user|
 | /api/user/ratings/:ratingId| POST| Create or update a given rating| Only referred user or administrators|

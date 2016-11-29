@@ -23,8 +23,4 @@ router.route('/:userId')
   /** DELETE /api/user/:userId -Delete a user*/
   .delete(userCtrl.delete);
 
-// Load user object when API with userId route param is hit
-// This means that in your handler function you will be able
-// to find user at req.param
-router.param('userId',userCtrl.load);
 export default router;
