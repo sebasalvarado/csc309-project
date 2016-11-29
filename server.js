@@ -1,6 +1,7 @@
 var express = require('express');
 var routes = require('./routes/index.routes.js');
 var bodyParser = require('body-parser');
+var http = require('http');
 
 var app = express();
 
@@ -16,6 +17,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
 
+
+
 /* Definition for Routing of Views */
 /* Get the index page */
 app.get('/', function(req, res) {
@@ -29,6 +32,9 @@ app.get('/search',function(req, res) {
 app.get('/listing',function(req, res) {
     res.render('pages/post-new-listing');
 });
+
+app.use('/', routes);
+
 /* Define all routes, function implementation in routes.js file */
 
 /* Definition of Routing of back-end. Should start with /api the path */
