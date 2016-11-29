@@ -21,7 +21,7 @@ Start up the server
 | /api/user| GET | Get the list of all users |
 | /api/user| DELETE | Delete a user | Only administrators|
 | /api/listing/:listingId| GET| Get a given listing by ID|
-| /api/listing/:listingId| POST | Create a new listing|
+| /api/listing| POST | Create a new listing|
 | /api/listing/:listingId| DELETE| Delete a given listing|
 | /api/request | GET | Get all the requests in the system| |
 | /api/request/:requestId| GET | Get a given request info from a user to another|
