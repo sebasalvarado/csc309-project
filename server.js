@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
 
+/* Definition for Routing of Views */
 /* Get the index page */
 app.get('/', function(req, res) {
     res.render('pages/view-item');
@@ -25,6 +26,7 @@ app.get('/search',function(req, res) {
 
 /* Define all routes, function implementation in routes.js file */
 
+/* Definition of Routing of back-end. Should start with /api the path */
 
 /* start the server */
 app.listen(process.env.PORT || 3000);

@@ -7,3 +7,10 @@ Run
 
 Start up the server
 `node server.js`
+
+
+
+## Express Router and routes
+
+| Route | HTTP Verb | Description |
+| ----- | --------- | ----------- |
