@@ -1,16 +1,16 @@
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 8080;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
+const express  = require('express');
+const app      = express();
+const port     = process.env.PORT || 8080;
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash    = require('connect-flash');
 
-var morgan       = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+const morgan       = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser   = require('body-parser');
+const session      = require('express-session');
 
-var routes = require('./routes/routes');
+const routes = require('./routes/routes');
 
 /* User res.render to load up ejs files */
 // Set the view engines to ejs
@@ -53,12 +53,6 @@ app.get('/login', function(req, res) {
     res.render('pages/login.ejs', { message: req.flash('loginMessage') });
 });
 
-//authenticate user on login
-// app.post('/login',
-//     passport.authenticate('local', { successRedirect: '/',
-//         failureRedirect: '/login',
-//         failureFlash: true })
-// );
 
 // show the signup form
 app.get('/signup', function(req, res) {
@@ -82,6 +76,7 @@ app.get('/listing',function(req, res) {
 /* Define all routes, function implementation in routes.js file */
 
 /* Definition of Routing of back-end. Should start with /api the path */
+
 
 
 /* start the server */
