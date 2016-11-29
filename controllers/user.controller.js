@@ -43,4 +43,4 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
  });
  }
 
- export default {create};
+ export default {create,get};

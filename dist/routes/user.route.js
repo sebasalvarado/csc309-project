@@ -28,9 +28,9 @@ router.route('/')
 //TODO Add VALIDATION TO CREATE A USER
 .post(_user2.default.create);
 
-//router.route('/:userId')
+router.route('/:userId')
 /** GET /api/user/:userId - Get a user */
-//.get(userCtrl.get);
+.get(_user2.default.get);
 
 /**POST /api/user/:userId -Update a User*/
 //.post(userCtrl.update)

@@ -52,6 +52,6 @@ function create(req, res, next) {
   });
 }
 
-exports.default = { create: create };
+exports.default = { create: create, get: get };
 module.exports = exports['default'];
 //# sourceMappingURL=user.controller.js.map
