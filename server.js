@@ -26,6 +26,9 @@ app.get('/search',function(req, res) {
     res.render('pages/search-item');
 });
 
+app.get('/listing',function(req, res) {
+    res.render('pages/post-new-listing');
+});
 /* Define all routes, function implementation in routes.js file */
 
 /* Definition of Routing of back-end. Should start with /api the path */
