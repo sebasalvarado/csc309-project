@@ -4,8 +4,10 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-app.use(express.static(__dirname + '/assets'));
-app.use(express.static(__dirname + '/'));
+/* User res.render to load up ejs files */
+// Set the view engines to ejs
+app.set('view engine', 'ejs');
+
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -14,7 +16,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 /* Get the index page */
 app.get('/', function(req, res) {
-    res.sendfile('html/viewitem.html');
+    res.render('pages/view-item');
+});
+
+app.get('/search',function(req, res) {
+    res.render('pages/search-item');
 });
 
 /* Define all routes, function implementation in routes.js file */

@@ -1,44 +1,14 @@
 <!DOCTYPE html>
 <html lang = "en">
-
    <head>
-
-      <meta charset = "utf-8">
-      <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-      <meta name = "viewport" content = "width = device-width, initial-scale = 1">
-
-      <!-- Import Jquery API -->
-      <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-      <!-- CSS styling for page -->
-      <link rel="stylesheet" href="../assets/css/viewitemstyle.css">
-
-      <!-- Javascript script for page -->
-      <script src="../assets/scripts/viewitemscript.js"> </script>
-
-      <!-- Import Google Maps API  -->
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEhVniNNOqfh0w3vHJouB8XmUu_z8Y298&callback=initMap" async defer></script>
-
-
-      <title>View Item Page - ShareGoods</title>
-
-
+     <% include ../partials/head %>
    </head>
-
    <body>
       <div class="container">
 
         <!--  Navigation bar -->
         <div class="medium-top-buffer">
+          <% include ../partials/navigation %>
         </div>
 
         <!-- Row for page header information -->
@@ -46,7 +16,7 @@
 
           <!-- ShareGoods Logo, page title -->
           <div class="col-md-5">
-            <img id="sharegoodslogo" src="../assets/images/sharegoodslogo.png" alt="ShareGoods Logo">
+            <img id="sharegoodslogo" src="../assets/images/share-goods-logo.png" alt="ShareGoods Logo">
           </div>
 
           <div class="col-md-7">
@@ -67,7 +37,7 @@
             <!-- Item image -->
             <div id="itemImage">
               <!-- Dynamically load image here, example image for now -->
-              <img id="itemImage" src="../assets/images/exampleimage.png">
+              <img id="itemImage" src="../assets/images/example-image.png">
             </div>
 
 
