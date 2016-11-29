@@ -13,7 +13,7 @@ Start up the server
 ## Express Router and routes
 
 | Route | HTTP Verb | Description |Observations
-| --------| --------- | ----------- |
+| --------| --------- | ----------- |---|
 | /api/user/:userid | GET | Retrieve the information of a given user. |
 | /api/user| POST | Create or update a new user |
 | /api/user| DELETE | Delete a user | Only administrators|
