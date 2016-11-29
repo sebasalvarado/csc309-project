@@ -8,7 +8,7 @@
 
  function create(req, res, next){
    const results = [];
-  const data = {
+   const data = {
     email : req.body.email,
     phone : req.body.phone,
     item : req.body.item,
@@ -41,4 +41,4 @@
  });
 }
 
-module.exports = create;
+ export default {create};

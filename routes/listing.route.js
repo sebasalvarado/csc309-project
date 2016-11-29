@@ -1,7 +1,7 @@
-var express =require('express');
-//var validate = require('express-validation');
-//var paramValidation = require('../../config/param-validation');
-var listingCtrl = require('../controllers/listing.controller');
+import express from 'express';
+import validate from 'express-validation';
+import paramValidation from '../../config/param-validation';
+import listingCtrl from '../controllers/listing.controller';
 
 
 const router = express.Router();
@@ -13,4 +13,4 @@ router.route('/')
   //TODO Add VALIDATION TO CREATE A USER
   .post(listingCtrl.create);
 
-module.exports = router;
+export default router;
