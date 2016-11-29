@@ -7,6 +7,8 @@ var app = express();
 /* User res.render to load up ejs files */
 // Set the view engines to ejs
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/'));
 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
