@@ -5,7 +5,8 @@
  * @returns {User}
  */
  function get(req, res){
-   db.any("select * from ")
+   console.log("HIT");
+   return res.send(200);
  }
 
  export default {get};
