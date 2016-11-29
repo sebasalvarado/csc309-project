@@ -1,0 +1,1 @@
+{"version":3,"sources":["controllers/user.controller.js"],"names":["get","req","res","console","log","send"],"mappings":";;;;;;;AAGA;;;AAGC,SAASA,GAAT,CAAaC,GAAb,EAAkBC,GAAlB,EAAsB;AACpBC,UAAQC,GAAR,CAAY,KAAZ;AACA,SAAOF,IAAIG,IAAJ,CAAS,GAAT,CAAP;AACD;;kBAEc,EAACL,QAAD,E","file":"user.controller.js","sourceRoot":"../../.."}
