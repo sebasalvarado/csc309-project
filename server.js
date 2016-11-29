@@ -33,8 +33,29 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-/* Get the index page */
+
+
+// show home page
 app.get('/', function(req, res) {
+    res.render('index.ejs'); // load the index.ejs file
+});
+
+
+// show the login form
+app.get('/login', function(req, res) {
+    // render the page and pass in any flash data if it exists
+    res.render('login.ejs', { message: req.flash('loginMessage') });
+});
+
+// show the signup form
+app.get('/signup', function(req, res) {
+    // render the page and pass in any flash data if it exists
+    res.render('signup.ejs', { message: req.flash('signupMessage') });
+});
+
+
+/* Get the index page */
+app.get('/view-item', function(req, res) {
     res.render('pages/view-item');
 });
 
