@@ -7,7 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "group4",
-  "license": "ISC",
+  "main": "server.js",
+  "engines": {
+  "node": ">=4.6.x",
+  "npm": ">=2.15.x"
+  },
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",

@@ -14,8 +14,11 @@ Start up the server
 
 | Route | HTTP Verb | Description |Observations
 | --------| --------- | ----------- |---|
+|/api/auth/login | POST | Returns token if correct username and password is provided| |
 | /api/user/:userid | GET | Retrieve the information of a given user. |
+| /api/user/:userId| POST | Update a user| |
 | /api/user| POST | Create or update a new user |
+| /api/user| GET | Get the list of all users |
 | /api/user| DELETE | Delete a user | Only administrators|
 | /api/listing/:listingId| GET| Get a given listing by ID|
 | /api/listing/:listingId| POST | Create a new listing|
