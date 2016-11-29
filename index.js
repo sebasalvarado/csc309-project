@@ -1,3 +1,4 @@
+
 const express  = require('express');
 const app      = express();
 const port     = process.env.PORT || 8080;
@@ -11,6 +12,7 @@ const bodyParser   = require('body-parser');
 const session      = require('express-session');
 
 const routes = require('./routes/routes');
+
 
 /* User res.render to load up ejs files */
 // Set the view engines to ejs
@@ -36,6 +38,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+// Mount all /api routes to index.route.js
+app.use('/api',routes);
 
 
 // show home page
