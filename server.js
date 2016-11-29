@@ -15,12 +15,15 @@ var routes = require('./routes/routes');
 /* User res.render to load up ejs files */
 // Set the view engines to ejs
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/'));
 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
+
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -36,6 +39,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // show home page
+
+/* Definition for Routing of Views */
+/* Get the index page */
 app.get('/', function(req, res) {
     res.render('pages/index.ejs'); // load the index.ejs file
 });
@@ -70,7 +76,12 @@ app.get('/search',function(req, res) {
     res.render('pages/search-item');
 });
 
+app.get('/listing',function(req, res) {
+    res.render('pages/post-new-listing');
+});
 /* Define all routes, function implementation in routes.js file */
+
+/* Definition of Routing of back-end. Should start with /api the path */
 
 
 /* start the server */
