@@ -28,7 +28,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: 'sharingiscaring' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -37,20 +37,20 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // show home page
 app.get('/', function(req, res) {
-    res.render('index.ejs'); // load the index.ejs file
+    res.render('pages/index.ejs'); // load the index.ejs file
 });
 
 
 // show the login form
 app.get('/login', function(req, res) {
     // render the page and pass in any flash data if it exists
-    res.render('login.ejs', { message: req.flash('loginMessage') });
+    res.render('pages/login.ejs', { message: req.flash('loginMessage') });
 });
 
 // show the signup form
 app.get('/signup', function(req, res) {
     // render the page and pass in any flash data if it exists
-    res.render('signup.ejs', { message: req.flash('signupMessage') });
+    res.render('pages/signup.ejs', { message: req.flash('signupMessage') });
 });
 
 
