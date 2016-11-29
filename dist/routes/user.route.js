@@ -12,6 +12,10 @@ var _expressValidation = require('express-validation');
 
 var _expressValidation2 = _interopRequireDefault(_expressValidation);
 
+var _paramValidation = require('../../auth/param-validation');
+
+var _paramValidation2 = _interopRequireDefault(_paramValidation);
+
 var _user = require('../controllers/user.controller');
 
 var _user2 = _interopRequireDefault(_user);
