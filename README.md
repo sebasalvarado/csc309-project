@@ -6,7 +6,11 @@ Run
 `npm install`
 
 Start up the server
-`node server.js`
+`npm run start`
+
+We are using nodemon for reloading when something changes so feel free to make
+changes while the server is running in your local machine.
+
 
 
 
@@ -34,3 +38,8 @@ Start up the server
 | /api/listing/ratings/:ratingId| GET | Add or update a rating to a user|
 | /api/listing/ratings/:ratingId| POST | Create or update a given listing rating|
 | /api/listing/ratings/:ratingid| DELETE | Delete a given listing rating|
+
+
+### Accessing DataBase
+* PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+* heroku pg:psql --app share-goods
