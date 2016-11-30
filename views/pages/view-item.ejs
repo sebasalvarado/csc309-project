@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
    <head>
+
      <% include ../partials/head %>
 
      <!-- CSS styling for page -->
@@ -10,7 +11,7 @@
      <script src="../../assets/scripts/view-item-script.js"> </script>
 
      <!-- Import Google Maps API  -->
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEhVniNNOqfh0w3vHJouB8XmUu_z8Y298&callback=initMap" async defer></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEhVniNNOqfh0w3vHJouB8XmUu_z8Y298&callback=initMap" async defer></script>
 
    </head>
    <body>
@@ -23,11 +24,6 @@
 
         <!-- Row for page header information -->
         <div class="row" id="row1">
-
-          <!-- ShareGoods Logo, page title -->
-          <div class="col-md-5">
-            <img id="sharegoodslogo" src="../../assets/images/share-goods-logo.png" alt="ShareGoods Logo">
-          </div>
 
           <div class="col-md-7">
             <h1 id="userItemHeader"> User ______'s Item! </h1>
@@ -47,7 +43,7 @@
             <!-- Item image -->
             <div id="itemImage">
               <!-- Dynamically load image here, example image for now -->
-              <img id="itemImage" src="../../assets/images/example-image.png">
+              <img id="itemImage">
             </div>
 
 
@@ -64,6 +60,13 @@
               <p id="itemOtherInformation"> Other Information: </p>
             </div>
           </div>
+
+          <div id="requestButtonDiv">
+            <button id="requestButton">Request Item</button>
+          </div>
+
+
+
         </div>
 
         <!-- Row for padding -->

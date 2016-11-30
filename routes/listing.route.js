@@ -1,5 +1,6 @@
 import express from 'express';
 import validate from 'express-validation';
+
 import listingCtrl from '../controllers/listing.controller';
 
 const router = express.Router();

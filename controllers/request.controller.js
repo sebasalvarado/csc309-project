@@ -1,4 +1,3 @@
-
 /* Set up database connection */
  import pg from 'pg';
  pg.defaults.ssl = true;
