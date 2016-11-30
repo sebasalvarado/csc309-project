@@ -12,9 +12,12 @@ var _user = require('./user.route');
 
 var _user2 = _interopRequireDefault(_user);
 
+var _listing = require('./listing.route');
+
+var _listing2 = _interopRequireDefault(_listing);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import listingRoutes from './listing.route';
 //import requestRoutes from './request.route';
 //import authRoutes from './auth.route';
 //import userRatingRoutes from './userRating.route';
@@ -34,7 +37,7 @@ router.use('/user', _user2.default);
 // mount auth routes at /auth
 //router.use('/auth', authRoutes);
 // mount listing routes at /listing
-//router.use('/listing', listingRoutes);
+router.use('/listing', _listing2.default);
 
 // mount request routes at /request
 //router.use('/request', requestRoutes);

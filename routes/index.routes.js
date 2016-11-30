@@ -1,6 +1,6 @@
 import express from 'express';
 import userRoutes from './user.route';
-//import listingRoutes from './listing.route';
+import listingRoutes from './listing.route';
 //import requestRoutes from './request.route';
 //import authRoutes from './auth.route';
 //import userRatingRoutes from './userRating.route';
@@ -20,7 +20,7 @@ router.use('/user', userRoutes);
 // mount auth routes at /auth
 //router.use('/auth', authRoutes);
 // mount listing routes at /listing
-//router.use('/listing', listingRoutes);
+router.use('/listing', listingRoutes);
 
 // mount request routes at /request
 //router.use('/request', requestRoutes);

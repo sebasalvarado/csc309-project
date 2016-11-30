@@ -50,7 +50,6 @@ function create(req, res, next) {
       return res.json(results);
     });
   });
-  res.send(200);
 }
 
 exports.default = { create: create, list: list };
