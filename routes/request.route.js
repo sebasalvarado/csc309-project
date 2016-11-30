@@ -1,6 +1,5 @@
 import express from 'express';
 import validate from 'express-validation';
-
 import requestCtrl from '../controllers/request.controller';
 
 const router = express.Router();

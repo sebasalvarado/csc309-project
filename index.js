@@ -83,13 +83,11 @@ app.get('/listing',function(req, res) {
     res.render('pages/post-new-listing');
 });
 
-/* Handle requests */
-app.post('/api/request', function(req, res) {
-  res.send("okay");
-});
 
 /* Definition of Routing of back-end. Should start with /api the path */
 
+/* Handle requests */
+app.post('/api/request', routes);
 
 /* start the server */
 app.listen(process.env.PORT || 3000);

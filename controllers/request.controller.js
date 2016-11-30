@@ -52,6 +52,7 @@
 
 /* Create new item request tuple in database */
  function create(req, res, next) {
+    res.send("ay");
 
     const results = [];
     const data = {

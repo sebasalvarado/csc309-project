@@ -24,7 +24,7 @@ router.use('/listing', listingRoutes);
 //router.use('/listing', listingRoutes);
 
 // mount request routes at /request
-// router.use('/request', requestRoutes);/
+router.use('/request', requestRoutes);
 
 // mount user rating routes at /user/ratings
 //router.use('user/ratings', userRatingRoutes);
