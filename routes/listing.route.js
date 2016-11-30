@@ -10,3 +10,5 @@ router.route('/')
   .get(listingCtrl.list)
 /** POST Add a new listing **/
   .post(listingCtrl.create);
+
+export default router;

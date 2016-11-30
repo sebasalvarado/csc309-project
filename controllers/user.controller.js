@@ -3,7 +3,7 @@ import pg from 'pg';
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
- function get(req, res){
+ function list(req, res){
    console.log("HIT");
    return res.send(200);
  }
@@ -41,6 +41,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
      return res.json(results);
    });
  });
+ res.send(200);
  }
 
- export default {create,get};
+ export default {create,list};

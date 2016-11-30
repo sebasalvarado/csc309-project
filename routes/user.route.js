@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.route('/')
   /** GET /api/user - Get list of all users */
-  //.get(userCtrl.list)
+  .get(userCtrl.list)
 
   /** POST /api/user - Create a new user */
   //TODO Add VALIDATION TO CREATE A USER
@@ -15,7 +15,7 @@ router.route('/')
 
 router.route('/:userId')
   /** GET /api/user/:userId - Get a user */
-  .get(userCtrl.get);
+  .get(userCtrl.list);
 
   /**POST /api/user/:userId -Update a User*/
   //.post(userCtrl.update)
