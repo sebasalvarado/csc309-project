@@ -23,15 +23,11 @@
     "ejs": "^1.0.0",
     "express": "^4.14.0",
     "express-session": "~1.14.2",
-<<<<<<< HEAD
 
     "express-validation": "^1.0.1",
     "gulp-load-plugins": "^1.4.0",
     "joi": "^10.0.1",
 
-=======
-    "mongoose": "~4.7.0",
->>>>>>> c1116b0f6834020fc49bd5a6c2208ccdde834fc7
     "morgan": "~1.7.0",
     "passport": "~0.3.2",
     "express-validation": "^1.0.1",

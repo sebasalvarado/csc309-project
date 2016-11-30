@@ -35,12 +35,6 @@ function createUser(req) {
     };
 }
 
-function loginRedirect(req, res, next) {
-    if (req.user) return res.status(401).json(
-        {status: 'You are already logged in'});
-    return next();
-}
-
 function findUser(email) {
     pg.connect(connectionString, (err, client, done) => {
         const query = "SELECT ID FROM ShareGoods.User WHERE email = " + email;
@@ -62,6 +56,29 @@ function findUser(email) {
     });
 }
 
+function loginRedirect(req, res, next) {
+    if (req.user) return res.status(401).json(
+        {status: 'You are already logged in'});
+    return next();
+}
+
+
+function loginRequired(req, res, next) {
+    if (!req.user) return res.status(401).json({status: 'Please log in'});
+    return next();
+}
+
+function adminRequired(req, res, next) {
+    if (!req.user) res.status(401).json({status: 'Please log in'});
+    return knex('users').where({username: req.user.username}).first()
+        .then((user) => {
+            if (!user.admin) res.status(401).json({status: 'You are not authorized'});
+            return next();
+        })
+        .catch((err) => {
+            res.status(500).json({status: 'Something bad happened'});
+        });
+}
 
 
 module.exports = {
@@ -69,5 +86,7 @@ module.exports = {
     createUser,
     loginRedirect,
     handleErrors,
-    findUser
+    findUser,
+    loginRequired,
+    adminRequired
 };

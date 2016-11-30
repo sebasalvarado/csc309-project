@@ -8,10 +8,10 @@ const authHelpers = require('../auth/_helpers');
 /** POST /api/auth/login - Returns token if correct username and password **/
 
 router.route('/login')
-  .post(authCtrl.login);
+  .post(authHelpers.loginRedirect, authCtrl.login);
 
 router.route('/signup')
-    .post(authCtrl.signup);
+    .post(authHelpers.loginRedirect, authCtrl.signup);
 
 module.exports = router;
 

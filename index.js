@@ -1,6 +1,7 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 8080;
+const express  = require('express');
+const app      = express();
+const port     = process.env.PORT || 8080;
+>>>>>>> Stashed changes
 const passport = require('passport');
 const flash = require('connect-flash');
 

@@ -10,7 +10,20 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
 
 init();
 
-passport.use(new LocalStrategy(options, (username, password, done) => {
+passport.use('local-login', new LocalStrategy(options, (username, password, done) => {
+    // check to see if the username exists
+    const user = findUser(username);
+
+    if (!user) return done(null, false, {message: 'user does not exists.'});
+    if (!authHelpers.comparePass(password, user.password)) {
+        return done(null, false, {message: 'Incorrect password.'});
+    } else {
+        return done(null, user);
+    }
+
+}));
+
+passport.use('local-signup', new LocalStrategy(options, (username, password, done) => {
     // check to see if the username exists
     const user = findUser(username);
 

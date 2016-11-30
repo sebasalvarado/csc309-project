@@ -2,7 +2,7 @@ const passport = require('passport');
 
 //authenticate user on login
 function login(){
-    passport.authenticate('local', { successRedirect: '/',
+    passport.authenticate('local-login', { successRedirect: '/',
         failureRedirect: '/login',
         failureFlash: true })
 }
@@ -11,7 +11,7 @@ function login(){
 function signup(){
     passport.authenticate('local-signup', {
         successRedirect: '/',
-        failureRedirect: '/login',
+        failureRedirect: '/signup',
         failureFlash: true })
 }
 
