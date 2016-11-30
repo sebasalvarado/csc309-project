@@ -1,31 +1,12 @@
-/** Get the user
- * @returns {User}
- */
+import pg from 'pg';
 
-const pg = require('pg');
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
-
- function get(req, res){
+ function list(req, res){
    console.log("HIT");
-   pg.connect(connectionString, (err, client, done) => {
-    // Handle connection errors
-    if(err) {
-      done();
-      console.log(err);
-      return res.status(500).json({success: false, data: err});
-    }
-    const query = client.query('SELECT * FROM ShareGoods.User');
-    query.on('row', (row) => {
-      results.push(row);
-    });
-    query.on('end', () => {
-      done();
-      return res.json(results);
-    });
-  });
-}
+   return res.send(200);
+ }
 
  function create(req, res, next) {
    const results = [];
@@ -60,7 +41,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
      return res.json(results);
    });
  });
- return res.send('Success');
-}
+ res.send(200);
+ }
 
- export default {get, create};
+ export default {create,list};

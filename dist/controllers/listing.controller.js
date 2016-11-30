@@ -3,12 +3,14 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-/** Get the user
- * @returns {Listing}
- */
 
-var pg = require('pg');
-pg.defaults.ssl = true;
+var _pg = require('pg');
+
+var _pg2 = _interopRequireDefault(_pg);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_pg2.default.defaults.ssl = true;
 var connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
 function create(req, res, next) {
@@ -22,7 +24,7 @@ function create(req, res, next) {
     returndate: req.body.returnDate,
     location: req.body.location
   };
-  pg.connect(connectionString, function (err, client, done) {
+  _pg2.default.connect(connectionString, function (err, client, done) {
     // Handle connection errors
     if (err) {
       done();

@@ -3,32 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-/** Get the user
- * @returns {User}
- */
 
-var pg = require('pg');
-pg.defaults.ssl = true;
+var _pg = require('pg');
+
+var _pg2 = _interopRequireDefault(_pg);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_pg2.default.defaults.ssl = true;
 var connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
-function get(req, res) {
+function list(req, res) {
   console.log("HIT");
-  pg.connect(connectionString, function (err, client, done) {
-    // Handle connection errors
-    if (err) {
-      done();
-      console.log(err);
-      return res.status(500).json({ success: false, data: err });
-    }
-    var query = client.query('SELECT * FROM ShareGoods.User');
-    query.on('row', function (row) {
-      results.push(row);
-    });
-    query.on('end', function () {
-      done();
-      return res.json(results);
-    });
-  });
+  return res.send(200);
 }
 
 function create(req, res, next) {
@@ -42,7 +29,7 @@ function create(req, res, next) {
     address: req.body.address,
     email: req.body.email
   };
-  pg.connect(connectionString, function (err, client, done) {
+  _pg2.default.connect(connectionString, function (err, client, done) {
     // Handle connection errors
     if (err) {
       done();
@@ -63,9 +50,9 @@ function create(req, res, next) {
       return res.json(results);
     });
   });
-  return res.send('Success');
+  res.send(200);
 }
 
-exports.default = { get: get, create: create };
+exports.default = { create: create, list: list };
 module.exports = exports['default'];
 //# sourceMappingURL=user.controller.js.map
