@@ -17,28 +17,17 @@
     "bcrypt-nodejs": "latest",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
-
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.3",
-    "ejs": "^1.0.0",
-    "express": "^4.14.0",
-    "express-session": "^1.14.2",
-    "mongoose": "^4.7.0",
-    "morgan": "^1.7.0",
-    "passport": "^0.3.2",
-
     "connect-flash": "~0.1.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^1.0.0",
     "express": "^4.14.0",
     "express-session": "~1.14.2",
-    "express-validation": "^1.0.1",
-    "gulp-load-plugins": "^1.4.0",
-    "joi": "^10.0.1",
     "mongoose": "~4.7.0",
     "morgan": "~1.7.0",
     "passport": "~0.3.2",
-
+    "express-validation": "^1.0.1",
+    "gulp-load-plugins": "^1.4.0",
+    "joi": "^10.0.1",
     "passport-facebook": "~2.1.1",
     "passport-google-oauth": "~1.0.0",
     "passport-local": "~1.0.0",
@@ -46,9 +35,6 @@
     "pg": "^6.1.0"
   },
   "devDependencies": {
-
-    "mocha": "^3.2.0",
-
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-plugin-add-module-exports": "^0.2.1",
