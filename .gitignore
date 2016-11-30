@@ -1,3 +1,4 @@
 node_modules
 proposal/
 .idea
+dist/
