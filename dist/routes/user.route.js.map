@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-{"version":3,"sources":["routes/user.route.js"],"names":["router","Router","route","get"],"mappings":";;;;;;AAAA;;;;AACA;;;;AAEA;;;;AAEA;;;;;;AAEA,IAAMA,SAAS,kBAAQC,MAAR,EAAf;;AAEA;AACE;AACA;;AAEA;AACA;AACA;;AAEFD,OAAOE,KAAP,CAAa,UAAb;AACE;AADF,CAEGC,GAFH,CAEO,eAASA,GAFhB;;AAIE;AACA;;AAEA;AACA;;kBAEaH,M","file":"user.route.js","sourceRoot":"../../.."}
-=======
-{"version":3,"sources":["routes/user.route.js"],"names":["router","Router","route","post","create","get"],"mappings":";;;;;;AAAA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,SAAS,kBAAQC,MAAR,EAAf;;AAEAD,OAAOE,KAAP,CAAa,GAAb;AACE;AACA;;AAEA;AACA;AALF,CAMGC,IANH,CAMQ,eAASC,MANjB;;AAQAJ,OAAOE,KAAP,CAAa,UAAb;AACE;AADF,CAEGG,GAFH,CAEO,eAASA,GAFhB;;AAIE;AACA;;AAEA;AACA;;kBAEaL,M","file":"user.route.js","sourceRoot":"../../.."}
->>>>>>> 2d8c9208f6e777e3d4cdddb0134bcf74b5280e03
