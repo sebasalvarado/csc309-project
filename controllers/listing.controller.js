@@ -101,4 +101,3 @@ function remove(req, res, next) {
 }
 
  export default {list, create, remove};
->>>>>>> 1214a22206046537dbe599e1b6c52cbf426133e5

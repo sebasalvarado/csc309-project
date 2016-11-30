@@ -19,7 +19,6 @@ passport.use('local-login', new LocalStrategy({
         const user = authHelpers.findUser(username);
         console.log ('user ' + user);
         if (!user) return done(null, false, {message: 'user does not exists.'});
-git
         if (!authHelpers.comparePass(password, user.password)) {
             console.log('no go');
             return done(null, false, {message: 'Incorrect password.'});
