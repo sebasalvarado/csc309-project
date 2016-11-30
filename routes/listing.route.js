@@ -1,6 +1,5 @@
 import express from 'express';
 import validate from 'express-validation';
-import paramValidation from '../../config/param-validation';
 import listingCtrl from '../controllers/listing.controller';
 
 const router = express.Router();
@@ -11,4 +10,11 @@ router.route('/')
 /** POST Add a new listing **/
   .post(listingCtrl.create);
 
+<<<<<<< HEAD
+router.route('/:listingID')
+  .get(listingCtrl.list)
+  .delete(listingCtrl.remove)
+
+=======
+>>>>>>> e7395314294cb289b6b28a9e6ffcc2d1342d1027
 export default router;
