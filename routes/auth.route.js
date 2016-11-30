@@ -3,7 +3,7 @@ import authCtrl from '../controllers/auth.controller';
 
 const passport = require('passport');
 const router = express.Router();
-const authHelpers = require('../auth/_helpers');
+const authHelpers = require('../auth/auth_helpers');
 
 /** POST /api/auth/login - Returns token if correct username and password **/
 

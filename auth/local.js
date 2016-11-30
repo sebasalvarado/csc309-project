@@ -12,8 +12,9 @@ init();
 
 passport.use('local-login', new LocalStrategy(options, (username, password, done) => {
     // check to see if the username exists
+    console.log('hi');
     const user = findUser(username);
-
+    console.log('hello');
     if (!user) return done(null, false, {message: 'user does not exists.'});
     if (!authHelpers.comparePass(password, user.password)) {
         return done(null, false, {message: 'Incorrect password.'});
