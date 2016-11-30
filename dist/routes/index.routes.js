@@ -38,6 +38,7 @@ router.use('/user', _user2.default);
 //router.use('/auth', authRoutes);
 // mount listing routes at /listing
 router.use('/listing', _listing2.default);
+//router.use('/listing', listingRoutes);
 
 // mount request routes at /request
 //router.use('/request', requestRoutes);

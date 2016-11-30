@@ -41,9 +41,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
      return res.json(results);
    });
  });
-}
- res.send(200);
+  res.send(200);
  }
-
 
  export default {create,list};
