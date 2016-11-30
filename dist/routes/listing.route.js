@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -24,4 +28,7 @@ var router = _express2.default.Router();
 router.route('/').get(_listing2.default.list)
 /** POST Add a new listing **/
 .post(_listing2.default.create);
+
+exports.default = router;
+module.exports = exports['default'];
 //# sourceMappingURL=listing.route.js.map

@@ -22,7 +22,7 @@ var router = _express2.default.Router();
 
 router.route('/')
 /** GET /api/user - Get list of all users */
-//.get(userCtrl.list)
+.get(_user2.default.list)
 
 /** POST /api/user - Create a new user */
 //TODO Add VALIDATION TO CREATE A USER
@@ -30,7 +30,7 @@ router.route('/')
 
 router.route('/:userId')
 /** GET /api/user/:userId - Get a user */
-.get(_user2.default.get);
+.get(_user2.default.list);
 
 /**POST /api/user/:userId -Update a User*/
 //.post(userCtrl.update)
