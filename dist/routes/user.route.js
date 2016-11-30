@@ -20,17 +20,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express2.default.Router();
 
-//router.route('/')
+router.route('/')
 /** GET /api/user - Get list of all users */
-//.get(userCtrl.list)
+.get(_user2.default.list)
 
 /** POST /api/user - Create a new user */
 //TODO Add VALIDATION TO CREATE A USER
-//.post(userCtrl.create);
+.post(_user2.default.create);
 
 router.route('/:userId')
 /** GET /api/user/:userId - Get a user */
-.get(_user2.default.get);
+.get(_user2.default.list);
 
 /**POST /api/user/:userId -Update a User*/
 //.post(userCtrl.update)
