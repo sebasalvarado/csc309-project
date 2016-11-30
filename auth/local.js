@@ -10,31 +10,67 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
 
 init();
 
-passport.use('local-login', new LocalStrategy(options, (username, password, done) => {
-    // check to see if the username exists
-    console.log('hi');
-    const user = findUser(username);
-    console.log('hello');
-    if (!user) return done(null, false, {message: 'user does not exists.'});
-    if (!authHelpers.comparePass(password, user.password)) {
-        return done(null, false, {message: 'Incorrect password.'});
-    } else {
-        return done(null, user);
-    }
+passport.use('local-login', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password'
+    },
+    (username, password, done) => {
+        // check to see if the username exists
+        const user = authHelpers.findUser(username);
+        console.log ('user ' + user);
+        if (!user) return done(null, false, {message: 'user does not exists.'});
+git
+        if (!authHelpers.comparePass(password, user.password)) {
+            console.log('no go');
+            return done(null, false, {message: 'Incorrect password.'});
+        } else {
+            console.log('go');
+            return done(null, user);
+        }
 
-}));
+    }));
 
-passport.use('local-signup', new LocalStrategy(options, (username, password, done) => {
-    // check to see if the username exists
-    const user = findUser(username);
+passport.use('local-signup', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true // allows us to pass back the entire request to the callback
+    },
+    function (req, email, password, done) {
 
-    if (!user) return done(null, false, {message: 'user does not exists.'});
-    if (!authHelpers.comparePass(password, user.password)) {
-        return done(null, false, {message: 'Incorrect password.'});
-    } else {
-        return done(null, user);
-    }
+        // find a user whose email is the same as the forms email
+        // we are checking to see if the user trying to login already exists
+        User.findOne({'local.email': email}, function (err, user) {
+            // if there are any errors, return the error
+            if (err)
+                return done(err);
 
-}));
+            // check to see if theres already a user with that email
+            if (user) {
+                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+            } else {
+
+                // if there is no user with that email
+                // create the user
+                var newUser = new User();
+
+                // set the user's local credentials
+                newUser.local.email = email;
+                newUser.local.password = newUser.generateHash(password);
+
+                // save the user
+                newUser.save(function (err) {
+                    if (err)
+                        throw err;
+                    return done(null, newUser);
+                });
+            }
+
+        });
+
+    }))
+;
+
+
 
 module.exports = passport;

@@ -24,16 +24,26 @@
 
         <!-- LOGIN FORM -->
 
-        <form id="signup" action="/api/auth/signup" method="post">
+        <form id="signup" action="/api/user" method="post">
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" value="ian">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" value="ian123">
+            </div>
 
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" class="form-control" name="first-name" value="Ian">
+                <input type="text" class="form-control" name="firstName" value="Ian">
             </div>
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" name="last-name" value="Hibbert">
+                <input type="text" class="form-control" name="lastName" value="Hibbert">
             </div>
 
             <div class="form-group">
@@ -41,11 +51,6 @@
                 <input type="text" class="form-control" name="email" value="ian.hibbert@mail.utoronto.ca">
 
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password" value="ian123">
-            </div>
-
 
             <div class="form-group">
                 <label>Phone Number</label>

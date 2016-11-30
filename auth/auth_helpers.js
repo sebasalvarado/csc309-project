@@ -1,4 +1,9 @@
+import pg from 'pg';
 const bcrypt = require('bcryptjs');
+
+pg.defaults.ssl = true;
+const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
+
 
 function comparePass(userPassword, databasePassword) {
     return bcrypt.compareSync(userPassword, databasePassword);
@@ -21,6 +26,10 @@ function handleErrors(req) {
     });
 }
 
+function handleResponse(res, code, statusMsg) {
+    res.status(code).json({status: statusMsg});
+}
+
 function createUser(req) {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
@@ -36,24 +45,31 @@ function createUser(req) {
 }
 
 function findUser(email) {
+    let results = [];
     pg.connect(connectionString, (err, client, done) => {
-        const query = "SELECT ID FROM ShareGoods.User WHERE email = " + email;
+
         // Handle connection errors
         if (err) {
             done();
             console.log(err);
-            return res.status(500).json({success: false, data: err});
+            return err;
         }
 
-        client.query(query, function (err, qres) {
-            if (err) {
-                console.log("error getting email");
-            }
-            else {
-                return json(qres.rows);
-            }
+        const query = client.query("SELECT email, password FROM ShareGoods.User WHERE email =($1)", [email]);
+        // Stream results back one row at a time
+        query.on('row', (row) => {
+            results.push(row);
+        });
+        // After all data is returned, close connection and return results
+        query.on('end', () => {
+            done();
+            console.log('results 1 ' + results);
+            return results;
         });
     });
+    console.log('results 2 ' + results);
+
+    return results;
 }
 
 function loginRedirect(req, res, next) {
@@ -86,6 +102,7 @@ module.exports = {
     createUser,
     loginRedirect,
     handleErrors,
+    handleResponse,
     findUser,
     loginRequired,
     adminRequired

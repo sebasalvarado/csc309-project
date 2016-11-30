@@ -1,10 +1,11 @@
-const passport = require('passport');
+import passport from '../auth/local';
 
 //authenticate user on login
-function login(){
-    passport.authenticate('local-login', { successRedirect: '/',
-        failureRedirect: '/login',
+function login(req, res, next){
+    passport.authenticate('local-login', { successRedirect: '/view-item',
+        failureRedirect: '/',
         failureFlash: true })
+    (req, res, next);
 }
 
 // process the signup form
@@ -13,6 +14,7 @@ function signup(){
         successRedirect: '/',
         failureRedirect: '/signup',
         failureFlash: true })
+    (req, res, next);
 }
 
 

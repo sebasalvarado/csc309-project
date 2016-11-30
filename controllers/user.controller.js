@@ -19,6 +19,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
     address : req.body.address,
     email : req.body.email
   }
+
   pg.connect(connectionString, (err, client, done) => {
    // Handle connection errors
    if(err) {

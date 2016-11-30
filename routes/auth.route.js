@@ -1,7 +1,5 @@
 import express from 'express';
 import authCtrl from '../controllers/auth.controller';
-
-const passport = require('passport');
 const router = express.Router();
 const authHelpers = require('../auth/auth_helpers');
 
