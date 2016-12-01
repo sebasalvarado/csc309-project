@@ -47,7 +47,6 @@ function createUser(req) {
 
 function findUser(email, callback) {
     let results = {'username': '', 'password': ''};
-    console.log('user: ' + email + ' logging in...');
     pg.connect(connectionString, (err, client, done) => {
         // Handle connection errors
         if (err) {

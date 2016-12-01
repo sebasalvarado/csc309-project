@@ -10,7 +10,7 @@ module.exports = () => {
     // passport needs ability to serialize and unserialize users out of session
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user.email);
+        done(null, user.username);
     });
 
     // used to deserialize the user
@@ -19,7 +19,7 @@ module.exports = () => {
         authHelpers.findUser(email, (user) => {
             user = JSON.parse(user);
             if (user){
-                done(user.email);
+                done(null, user);
             }
         });
     });

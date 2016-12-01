@@ -19,12 +19,13 @@ passport.use('local-login', new LocalStrategy({
         authHelpers.findUser(username, function(user){
             user = JSON.parse(user);
             if (!user) return done(null, false, {message: 'user does not exists.'});
+            //(!authHelpers.comparePass(password, user.password))
             if (password != user.password) {
                 console.log(username + ' failed log in. Incorrect password.');
                 return done(null, false, {message: 'Incorrect password.'});
             } else {
-                console.log(username + ' has logged in.');
-                return done(null, user.email);
+                console.log(user.username + ' has logged in.');
+                return done(null, user);
             }
         });
     }));
@@ -69,6 +70,8 @@ passport.use('local-signup', new LocalStrategy({
 
     }))
 ;
+
+
 
 
 

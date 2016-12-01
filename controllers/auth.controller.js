@@ -2,7 +2,8 @@ import passport from '../auth/local';
 
 //authenticate user on login
 function login(req, res, next){
-    passport.authenticate('local-login', { successRedirect: '/view-item',
+    passport.authenticate('local-login', {
+        successRedirect: '/view-item',
         failureRedirect: '/',
         failureFlash: true })
     (req, res, next);
