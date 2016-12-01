@@ -8,6 +8,7 @@ function list(req, res) {
     return res.send(200);
 }
 
+
 function create(req, res, next) {
     const results = [];
     const data = {
@@ -18,8 +19,7 @@ function create(req, res, next) {
         phonenumber: req.body.phone,
         address: req.body.address,
         email: req.body.email
-    };
-
+    }
     pg.connect(connectionString, (err, client, done) => {
         // Handle connection errors
         if (err) {
@@ -42,9 +42,8 @@ function create(req, res, next) {
             return res.json(results);
         });
     });
-
-res.send(200);
+    res.send(200);
 }
 
-
 export default {create, list};
+

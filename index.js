@@ -63,22 +63,28 @@ app.get('/signup', function (req, res) {
 });
 
 
-/* Get the index page */
-app.get('/view-item', function (req, res) {
+/* Get the view item page */
+app.get('/view', function(req, res) {
     res.render('pages/view-item');
 });
 
-app.get('/search', function (req, res) {
+/* Get the search item page */
+app.get('/search',function(req, res) {
     res.render('pages/search-item');
 });
 
-app.get('/listing', function (req, res) {
+/* Get the post new listing page */
+app.get('/listing',function(req, res) {
     res.render('pages/post-new-listing');
 });
-/* Define all routes, function implementation in routes.js file */
+
 
 /* Definition of Routing of back-end. Should start with /api the path */
 
+/* Handle requests */
+app.post('/api/request', routes);
+
+app.get('/api/listing', routes);
 
 
 /* start the server */
