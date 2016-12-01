@@ -17,27 +17,21 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
 
     }
     // SQL Query > Select Data
-<<<<<<< HEAD
     if (typeof id != 'undefined') {
-=======
-    if (typeof id != null) {
-
->>>>>>> 6830e5fb8db22abfccaadf8bb521581078a5dd74
       const query = client.query('SELECT * FROM ShareGoods.listings WHERE listingid=($1)', [id]);
       query.on('row', (row) => {
         results.push(row);
-        console.log(row);
       });
       // After all data is returned, close connection and return results
       query.on('end', () => {
         done();
+        console.log("queried");
         return res.json(results);
       });
     }
 
     else {
       const query = client.query('SELECT * FROM ShareGoods.listings');
-      console.log("in function");
       query.on('row', (row) => {
         results.push(row);
       });
