@@ -10,7 +10,7 @@ const plugins = gulpLoadPlugins();
 
 const paths = {
   js: ['./**/*.js', '!dist/**', '!node_modules/**', '!coverage/**'],
-  nonJs: ['./package.json', './views','./.gitignore'],
+  nonJs: ['./package.json', './assets/**','./views/**','./.gitignore']
 };
 
 gulp.task('env:test', () => {
