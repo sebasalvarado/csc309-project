@@ -55,6 +55,12 @@ app.get('/login', function (req, res) {
     res.render('pages/login.ejs', {message: req.flash('loginMessage')});
 });
 
+//log out
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
 
 // show the signup form
 app.get('/signup', function (req, res) {
