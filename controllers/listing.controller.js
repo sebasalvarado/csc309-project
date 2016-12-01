@@ -5,9 +5,7 @@
  function list(req, res, next) {
    const results = [];
    const id = req.params.listingID;
-
    pg.connect(connectionString, (err, client, done) => {
-
     // Handle connection errors
     if (err) {
 
@@ -17,10 +15,11 @@
 
     }
     // SQL Query > Select Data
-    if (typeof id != null) {
+    if (typeof id != 'undefined') {
       const query = client.query('SELECT * FROM ShareGoods.listings WHERE listingid=($1)', [id]);
       query.on('row', (row) => {
         results.push(row);
+        console.log(row);
       });
       // After all data is returned, close connection and return results
       query.on('end', () => {
@@ -30,8 +29,8 @@
     }
 
     else {
-
       const query = client.query('SELECT * FROM ShareGoods.listings');
+      console.log("in function");
       query.on('row', (row) => {
         results.push(row);
       });

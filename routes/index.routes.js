@@ -3,8 +3,8 @@ import userRoutes from './user.route';
 import listingRoutes from './listing.route';
 import requestRoutes from './request.route';
 //import authRoutes from './auth.route';
-import userRatingRoutes from './userRating.route';
-import listingRatingRoutes from './listingRating.route';
+//import userRatingRoutes from './userRating.route';
+//import listingRatingRoutes from './listingRating.route';
 
 
 const router = express.Router();
@@ -28,10 +28,10 @@ router.use('/listing', listingRoutes);
 router.use('/request', requestRoutes);
 
 // mount user rating routes at /user/ratings
-router.use('user/ratings', userRatingRoutes);
+//router.use('user/ratings', userRatingRoutes);
 
 // mount listing rating routes at /listing/ratings
-router.use('listing/ratings', listingRatingRoutes);
+//router.use('listing/ratings', listingRatingRoutes);
 
 
 export default router;
