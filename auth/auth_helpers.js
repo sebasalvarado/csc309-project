@@ -1,5 +1,6 @@
 import pg from 'pg';
-const bcrypt = require('bcryptjs');
+import stringify from 'json-stringify';
+import bcrypt from 'bcryptjs';
 
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
@@ -37,39 +38,35 @@ function createUser(req) {
     return {
         email: req.body.email,
         password: hash,
-        firstname: req.body.first - name,
-        lastname: req.body.last - name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         phone: req.body.phone,
         address: req.body.address
     };
 }
 
-function findUser(email) {
-    let results = [];
+function findUser(email, callback) {
+    let results = {'username': '', 'password': ''};
+    console.log('user: ' + email + ' logging in...');
     pg.connect(connectionString, (err, client, done) => {
-
         // Handle connection errors
         if (err) {
             done();
             console.log(err);
             return err;
         }
-
         const query = client.query("SELECT email, password FROM ShareGoods.User WHERE email =($1)", [email]);
         // Stream results back one row at a time
         query.on('row', (row) => {
-            results.push(row);
+            results.username = row.email;
+            results.password = row.password;
         });
         // After all data is returned, close connection and return results
         query.on('end', () => {
             done();
-            console.log('results 1 ' + results);
-            return results;
+            callback(stringify(results));
         });
     });
-    console.log('results 2 ' + results);
-
-    return results;
 }
 
 function loginRedirect(req, res, next) {
