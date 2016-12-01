@@ -16,17 +16,17 @@ passport.use('local-login', new LocalStrategy({
     },
     (username, password, done) => {
         // check to see if the username exists
-        const user = authHelpers.findUser(username);
-        console.log ('user ' + user);
-        if (!user) return done(null, false, {message: 'user does not exists.'});
-        if (!authHelpers.comparePass(password, user.password)) {
-            console.log('no go');
-            return done(null, false, {message: 'Incorrect password.'});
-        } else {
-            console.log('go');
-            return done(null, user);
-        }
-
+        authHelpers.findUser(username, function(user){
+            user = JSON.parse(user);
+            if (!user) return done(null, false, {message: 'user does not exists.'});
+            if (password != user.password) {
+                console.log(username + ' failed log in. Incorrect password.');
+                return done(null, false, {message: 'Incorrect password.'});
+            } else {
+                console.log(username + ' has logged in.');
+                return done(null, user.email);
+            }
+        });
     }));
 
 passport.use('local-signup', new LocalStrategy({

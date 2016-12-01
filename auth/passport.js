@@ -16,12 +16,12 @@ module.exports = () => {
     // used to deserialize the user
     passport.deserializeUser(function(email, done) {
         //find user by email in database
-        const user = authHelpers.findUser(email);
-
-        if (user){
-            done(user.email);
-        }
-
+        authHelpers.findUser(email, (user) => {
+            user = JSON.parse(user);
+            if (user){
+                done(user.email);
+            }
+        });
     });
 
 
