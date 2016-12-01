@@ -21,7 +21,7 @@ router.use('/user', userRoutes);
 //router.use('/auth', authRoutes);
 // mount listing routes at /listing
 router.use('/listing', listingRoutes);
-//router.use('/listing', listingRoutes);
+// router.use('/listing', listingRoutes);
 
 // mount request routes at /request
 router.use('/request', requestRoutes);

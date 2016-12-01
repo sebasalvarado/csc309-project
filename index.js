@@ -89,6 +89,8 @@ app.get('/listing',function(req, res) {
 /* Handle requests */
 app.post('/api/request', routes);
 
+app.get('/api/listing', routes);
+
 /* start the server */
 app.listen(process.env.PORT || 3000);
 console.log('Listening on port 3000');
