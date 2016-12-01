@@ -14,7 +14,6 @@
   },
   "license": "MIT",
   "dependencies": {
-
     "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
@@ -23,16 +22,12 @@
     "ejs": "^1.0.0",
     "express": "^4.14.0",
     "express-session": "~1.14.2",
-
     "express-validation": "^1.0.1",
     "gulp-load-plugins": "^1.4.0",
     "joi": "^10.0.1",
-
+    "json-stringify": "^1.0.0",
     "morgan": "~1.7.0",
     "passport": "~0.3.2",
-    "express-validation": "^1.0.1",
-    "gulp-load-plugins": "^1.4.0",
-    "joi": "^10.0.1",
     "passport-facebook": "~2.1.1",
     "passport-google-oauth": "~1.0.0",
     "passport-local": "~1.0.0",
@@ -69,6 +64,5 @@
     "plugins": [
       "add-module-exports"
     ]
-
   }
 }
