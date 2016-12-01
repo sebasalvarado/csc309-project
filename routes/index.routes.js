@@ -22,7 +22,7 @@ router.use('/user', userRoutes);
 
 // mount listing routes at /listing
 router.use('/listing', listingRoutes);
-//router.use('/listing', listingRoutes);
+// router.use('/listing', listingRoutes);
 
 // mount request routes at /request
 router.use('/request', requestRoutes);
