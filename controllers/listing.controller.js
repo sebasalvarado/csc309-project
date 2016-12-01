@@ -1,8 +1,10 @@
- import pg from 'pg';
- pg.defaults.ssl = true;
- const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
+import pg from 'pg';
+
+pg.defaults.ssl = true;
+const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
  function list(req, res, next) {
+
    const results = [];
    const id = req.params.listingID;
    pg.connect(connectionString, (err, client, done) => {
@@ -15,7 +17,12 @@
 
     }
     // SQL Query > Select Data
+<<<<<<< HEAD
     if (typeof id != 'undefined') {
+=======
+    if (typeof id != null) {
+
+>>>>>>> 6830e5fb8db22abfccaadf8bb521581078a5dd74
       const query = client.query('SELECT * FROM ShareGoods.listings WHERE listingid=($1)', [id]);
       query.on('row', (row) => {
         results.push(row);
@@ -46,6 +53,7 @@
  }
 
  function create(req, res, next){
+
    const results = [];
    const data = {
     email : req.body.email,
@@ -56,6 +64,7 @@
     returndate : req.body.returnDate,
     location : req.body.location
   }
+
   pg.connect(connectionString, (err, client, done) => {
    // Handle connection errors
    if(err) {

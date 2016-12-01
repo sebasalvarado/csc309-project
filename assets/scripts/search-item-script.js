@@ -5,7 +5,6 @@ $(document).ready(function() {
 
       /* Submit request to server */
       getListings();
-      // alert("hi");
 
     });
 
@@ -13,24 +12,14 @@ $(document).ready(function() {
 
 /* Send request to server to get listings */
 function getListings() {
-
   /* Get user input for listing (if exists) */
-
 
   /* If no user input, return all listings */
 
-
-
-  /* Ajax request */
-  $.ajax({
-    url: "/api/listing",
-    type: "GET",
-    contentType: "application/json; charset=utf-8",
-    success: function(response) {
-
-      alert(response);
-
-    }
+  /* get request */
+  $.get("/api/listing", function(response) {
+       let message = JSON.parse(response);
+       alert(message);
   });
 
 }
