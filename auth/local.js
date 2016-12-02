@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const init = require('./passport');
 const authHelpers = require('./auth_helpers');
+const users = require('../controllers/user.controller');
 
 const pg = require('pg');
 pg.defaults.ssl = true;
@@ -11,18 +12,17 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
 init();
 
 passport.use('local-login', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password'
+        passReqToCallback: true
     },
-    (username, password, done) => {
+    (req, username, password, done) => {
         // check to see if the username exists
-        authHelpers.findUser(username, function(user){
+        users.findUser(username, req.res, function(user){
             user = JSON.parse(user);
-            if (!user) return done(null, false, {message: 'user does not exists.'});
+            if (!user.username) return done(null, false, req.flash('loginMessage', 'user does not exists.'));
             //(!authHelpers.comparePass(password, user.password))
             if (password != user.password) {
                 console.log(username + ' failed log in. Incorrect password.');
-                return done(null, false, {message: 'Incorrect password.'});
+                return done(null, false, req.flash('loginMessage', 'Oops wrong password.'));
             } else {
                 console.log(user.username + ' has logged in.');
                 return done(null, user);
@@ -31,40 +31,49 @@ passport.use('local-login', new LocalStrategy({
     }));
 
 passport.use('local-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField: 'email',
-        passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-    function (req, email, password, done) {
+    function (req, username, password, done) {
+        const data = {
+            username: req.body.username,
+            password: req.body.password,
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
+            phonenumber: req.body.phone,
+            address: req.body.address,
+            email: req.body.email
+        };
 
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
-        User.findOne({'local.email': email}, function (err, user) {
-            // if there are any errors, return the error
-            if (err)
-                return done(err);
-
-            // check to see if theres already a user with that email
-            if (user) {
-                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-            } else {
-
-                // if there is no user with that email
-                // create the user
-                var newUser = new User();
-
-                // set the user's local credentials
-                newUser.local.email = email;
-                newUser.local.password = newUser.generateHash(password);
-
-                // save the user
-                newUser.save(function (err) {
-                    if (err)
-                        throw err;
-                    return done(null, newUser);
-                });
+        users.findUser(username, req.res, function(user){
+            user = JSON.parse(user);
+            if (user.username){
+                return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
             }
+
+            users.validSignUp(data, req.res, function(results){
+                //email already exists
+                if (results.length == 0){
+                    users.createUser(req, req.res, function(user) {
+                        if (user){
+                            console.log('created new user: ' +  JSON.parse(user));
+                            return done(null, JSON.parse(user));
+                        }
+                    })
+                } else {
+                    for(let i = 0; i < results.length; i++){
+                        if (results[i].email == data.email){
+                            return done(null, false, req.flash('signupMessage', 'That email is already in use.'));
+                        }
+                        else if (results[i].address == data.address){
+                            return done(null, false, req.flash('signupMessage', 'That address is already in use.'));
+                        }
+                        else if (results[i].phonenumber == data.phonenumber){
+                            return done(null, false, req.flash('signupMessage', 'That phone number is already in use.'));
+                        }
+                    }
+                }
+
+            });
 
         });
 

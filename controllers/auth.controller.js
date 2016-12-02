@@ -4,15 +4,15 @@ import passport from '../auth/local';
 function login(req, res, next){
     passport.authenticate('local-login', {
         successRedirect: '/view',
-        failureRedirect: '/',
+        failureRedirect: '/login',
         failureFlash: true })
     (req, res, next);
 }
 
 // process the signup form
-function signup(){
+function signup(req, res, next){
     passport.authenticate('local-signup', {
-        successRedirect: '/',
+        successRedirect: '/view',
         failureRedirect: '/signup',
         failureFlash: true })
     (req, res, next);

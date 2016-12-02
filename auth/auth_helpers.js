@@ -31,22 +31,20 @@ function handleResponse(res, code, statusMsg) {
     res.status(code).json({status: statusMsg});
 }
 
-function createUser(req) {
+function createUser(req, callback) {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
 
-    return {
-        email: req.body.email,
+    const data = {
+        username: req.body.username,
         password: hash,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        phone: req.body.phone,
-        address: req.body.address
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
+        phonenumber: req.body.phone,
+        address: req.body.address,
+        email: req.body.email
     };
-}
 
-function findUser(email, callback) {
-    let results = {'username': '', 'password': ''};
     pg.connect(connectionString, (err, client, done) => {
         // Handle connection errors
         if (err) {
@@ -54,19 +52,23 @@ function findUser(email, callback) {
             console.log(err);
             return err;
         }
-        const query = client.query("SELECT email, password FROM ShareGoods.User WHERE email =($1)", [email]);
-        // Stream results back one row at a time
-        query.on('row', (row) => {
-            results.username = row.email;
-            results.password = row.password;
-        });
-        // After all data is returned, close connection and return results
-        query.on('end', () => {
+        // SQL Query > Insert Data
+        client.query('INSERT INTO ShareGoods.User (username, password, first_name, last_name, phonenumber, address, email) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            [data.username, data.password, data.first_name, data.last_name, data.phonenumber, data.address, data.email],
+        function(err, result){
             done();
-            callback(stringify(results));
+            if (err){
+                console.log (err);
+                return (err);
+            }else{
+                console.log(result);
+                callback(stringify(data));
+            }
         });
+
     });
 }
+
 
 function loginRedirect(req, res, next) {
     if (req.user) return res.status(401).json(
@@ -99,7 +101,6 @@ module.exports = {
     loginRedirect,
     handleErrors,
     handleResponse,
-    findUser,
     loginRequired,
     adminRequired
 };

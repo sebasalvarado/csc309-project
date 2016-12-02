@@ -11,8 +11,6 @@ function getListings() {
   $.get("/api/listing", function(response) {
         console.log("requested");
         console.log(response);
-       let message = $.parseJSON(response);
-       console.log(message);
   });
 }
 
