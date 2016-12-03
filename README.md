@@ -38,8 +38,8 @@ changes while the server is running in your local machine.
 | /api/user/ratings/:ratingId| DELETE | Delete a given rating|
 | /api/listing/ratings/| GET | Get all the listing ratings|
 | /api/listing/ratings/| POST | Creates a new listing rating| Parameters should be in query
-| /api/listing/ratings/:ratingId| GET | Get a given ratingId from a listing|
-| /api/listing/ratings/:ratingId| POST | Update a given listing rating|
+| /api/listing/ratings/:listingId| GET | Get a given ratingId from a listing|
+| /api/listing/ratings/:listingId| POST | Update a given listing rating|
 | /api/listing/ratings/:ratingid| DELETE | Delete a given listing rating|
 
 

@@ -6,7 +6,7 @@ import authRoutes from './auth.route';
 import requestRoutes from './request.route';
 //import authRoutes from './auth.route';
 //import userRatingRoutes from './userRating.route';
-//import listingRatingRoutes from './listingRating.route';
+import listingRatingRoutes from './listingRating.route';
 
 
 const router = express.Router();

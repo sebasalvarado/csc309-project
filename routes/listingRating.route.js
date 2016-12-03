@@ -13,7 +13,7 @@ router.route('/')
   .post(listingRatingCtrl.create);
 
 
-router.route('/:ratingId')
+router.route('/:listingId')
     /** GET Get a given listingId rating**/
     .get(listingRatingCtrl.find)
     /** POST Update a given ratingId **/
