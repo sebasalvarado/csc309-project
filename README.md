@@ -32,15 +32,15 @@ changes while the server is running in your local machine.
 | /api/request/:requestId| GET | Get a given request info from a user to another|
 | /api/request| POST| Create a new rental request|
 | /api/request/:requestId| DELETE| Delete a given request.| Only administrators|
-| /api/user/ratings/ | GET | Get all the user ratings|
-| /api/user/ratings/| POST| Create or update a given rating| Only referred user or administrators|
-| /api/user/ratings/:userId| GET | Get the rating given to a user|
+| /api/ratings/user | GET | Get all the user ratings|
+| /api/ratings/user| POST| Create or update a given rating| Only referred user or administrators|
+| /api/ratings/user:userId| GET | Get the rating given to a user|
 | /api/user/ratings/:ratingId| DELETE | Delete a given rating|
-| /api/listing/ratings/| GET | Get all the listing ratings|
+| /api/ratings/listing| GET | Get all the listing ratings|
 | /api/listing/ratings/| POST | Creates a new listing rating| Parameters should be in query
-| /api/listing/ratings/:listingId| GET | Get a given ratingId from a listing|
-| /api/listing/ratings/:listingId| POST | Update a given listing rating|
-| /api/listing/ratings/:listingId| DELETE | Delete a given listing rating|
+| /api/ratings/listing:listingId| GET | Get a given ratingId from a listing|
+| /api/ratings/listing:listingId| POST | Update a given listing rating|
+| /api/ratings/listing:listingId| DELETE | Delete a given listing rating|
 
 
 ### Accessing DataBase

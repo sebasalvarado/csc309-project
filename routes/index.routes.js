@@ -5,7 +5,7 @@ import listingRoutes from './listing.route';
 import authRoutes from './auth.route';
 import requestRoutes from './request.route';
 //import authRoutes from './auth.route';
-//import userRatingRoutes from './userRating.route';
+import userRatingRoutes from './userRating.route';
 import listingRatingRoutes from './listingRating.route';
 
 
