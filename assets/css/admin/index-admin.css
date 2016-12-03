@@ -1,0 +1,9 @@
+.entryLeft{
+  float: left;
+  width: 50%;
+}
+
+.entryRight{
+  float: right;
+  width: 50%;
+}
