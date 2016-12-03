@@ -1,7 +1,7 @@
 import express from 'express';
 import validate from 'express-validation';
 
-import listingRatingCtrl from 'listings.ratings.controller';
+import listingRatingCtrl from '../controllers/listings.ratings.controller';
 
 // Initialize the router
 const router = express.Router();
@@ -13,10 +13,12 @@ router.route('/')
   .post(listingRatingCtrl.create);
 
 
-router.route('/:ratingId')
+router.route('/:listingId')
     /** GET Get a given listingId rating**/
     .get(listingRatingCtrl.find)
     /** POST Update a given ratingId **/
     .post(listingRatingCtrl.update)
     /** DELETE delete a given ratingId **/
-    .delete(listingCtrl.remove);
+    .delete(listingRatingCtrl.remove);
+
+export default router;

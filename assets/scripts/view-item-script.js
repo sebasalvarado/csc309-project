@@ -1,13 +1,5 @@
 /* Load listing data to display on page */
 
-
-
-
-
-
-
-
-
 /* Load google maps data */
 var map;
 function initMap() {

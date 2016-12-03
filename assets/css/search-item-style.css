@@ -6,12 +6,32 @@ h1 {
 
 #data {
   width: 100%;
-  height: 850px; /* change to 100% after loading implemented */
+  height: 100%; /* change to 100% after loading implemented */
   border: 1px solid black;
 }
 
 #categories {
   width: 100%;
-  height: 850px; /* change to 100% after loading implemented */
+  height: 550px; /* change to 100% after loading implemented */
   border: 1px solid black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 8px;
+  text-align: center;
+  font-size: 15px;
+}
+
+h2 {
+  font-size: 28px;
+  text-align: center;
+}
+
+li {
+  padding-bottom: 8px;
+}
+
+.medium-top-buffer {
+  padding-top: 30px;
 }
