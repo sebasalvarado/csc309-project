@@ -10,17 +10,16 @@ router.route('/')
   .get(userCtrl.list)
 
   /** POST /api/user - Create a new user */
-  //TODO Add VALIDATION TO CREATE A USER
   .post(userCtrl.create);
 
-router.route('/:userId')
-  /** GET /api/user/:userId - Get a user */
-  .get(userCtrl.list);
+router.route('/:username')
+  /** GET /api/user/:username - Get a user */
+  .get(userCtrl.listUserName)
 
   /**POST /api/user/:userId -Update a User*/
-  //.post(userCtrl.update)
+  .post(userCtrl.update)
 
   /** DELETE /api/user/:userId -Delete a user*/
-  //.delete(userCtrl.delete);
+  .delete(userCtrl.remove);
 
 export default router;
