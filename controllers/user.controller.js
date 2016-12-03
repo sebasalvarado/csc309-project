@@ -20,14 +20,12 @@ function list(req, res){
    // After all data is returned, close connection and return results
    query.on('end', () => {
      done();
-     console.log("queried");
      return res.json(results);
    });
  });
  }
 function create(req, res, next) {
     const results = [];
->>>>>>> edf68e80fc5b03e952128859423f42c5b8678d7f
     const data = {
         username: req.body.username,
         password: hash,
@@ -72,7 +70,6 @@ function validSignUp(user, res, callback){
         const query = client.query("SELECT * FROM ShareGoods.User WHERE email =($1) or address = ($2) or phonenumber = ($3)",
             [user.email, user.address, user.phonenumber]);
 
->>>>>>> e83af6f855fc13ac59712cc530b703fae9353f7b
         // Stream results back one row at a time
         query.on('row', (row) => {
             results.push(row);
@@ -91,4 +88,53 @@ function validSignUp(user, res, callback){
     });
 }
 
-export default {createUser, findUser, list, validSignUp};
+function remove(req, res, next) {
+  const name = req.params.username;
+  const results = [];
+  pg.connect(connectionString, (err, client, done) => {
+     // Handle connection errors
+     if(err) {
+       done();
+       console.log(err);
+       return res.status(500).json({success: false, data: err});
+     }
+     // SQL Query > Delete Data
+    const query = client.query('DELETE FROM ShareGoods.user WHERE username=($1)', [name]);
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
+  });
+}
+
+/** Query a user by a username **/
+function listUserName(req, res){
+  // Get the username from query
+  var username = req.query.username;
+  const results = [];
+  pg.connect(connectionString, (err, client, done) => {
+   // Handle connection errors
+   if (err) {
+     done();
+     console.log(err);
+     return res.status(500).json({success: false, data: err});
+   }
+
+   const query = client.query("select * from sharegoods.user where username = $1;",[username]);
+   query.on('row', (row) => {
+     results.push(row);
+   });
+   // After all data is returned, close connection and return results
+   query.on('end', () => {
+     done();
+     return res.json(results);
+   });
+ });
+ }
+
+function update(req,res,next){
+  console.log("IMPLEMENT");
+}
+
+export default {create, list,remove,listUserName,update, findUser, validSignUp};
