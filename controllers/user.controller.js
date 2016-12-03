@@ -42,8 +42,6 @@ function create(req, res, next) {
             return res.json(results);
         });
     });
-    res.send(200);
 }
 
 export default {create, list};
-
