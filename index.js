@@ -48,6 +48,10 @@ app.get('/', function (req, res) {
     res.render('pages/index.ejs'); // load the index.ejs file
 });
 
+app.get('/main/:username', function(req, res){
+  res.render('pages/main.ejs'); // Load main page
+});
+
 // show the login form
 app.get('/login', function (req, res) {
     // render the page and pass in any flash data if it exists
