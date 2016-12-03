@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
     $("#navigation").find("#submitId").submit(function(event){

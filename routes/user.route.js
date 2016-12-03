@@ -12,6 +12,7 @@ router.route('/')
   /** POST /api/user - Create a new user */
   .post(userCtrl.create);
 
+
 router.route('/:username')
   /** GET /api/user/:username - Get a user */
   .get(userCtrl.listUserName)
