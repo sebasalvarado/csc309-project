@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const routes = require('./routes/index.routes');
+const authHelpers = require('./auth/auth_helpers');
 
 
 /* User res.render to load up ejs files */
@@ -36,20 +37,15 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// Mount all /api routes to index.route.js
-app.use('/api', routes);
-
 
 // show home page
 
 /* Definition for Routing of Views */
 /* Get the index page */
+
+
 app.get('/', function (req, res) {
     res.render('pages/index.ejs'); // load the index.ejs file
-});
-
-app.get('/main', function(req, res){
-  res.render('pages/main.ejs'); // Load main page
 });
 
 // show the login form
@@ -58,12 +54,28 @@ app.get('/login', function (req, res) {
     res.render('pages/login.ejs', {message: req.flash('loginMessage')});
 });
 
-
 // show the signup form
 app.get('/signup', function (req, res) {
     // render the page and pass in any flash data if it exists
     res.render('pages/signup.ejs', {message: req.flash('signupMessage')});
 });
+
+app.get ('/*', function(req, res, next){
+    authHelpers.loginRequired(req, res, next);
+});
+
+app.get('/main', function(req, res){
+  res.render('pages/main.ejs'); // Load main page
+    console.log(req.user);
+});
+
+
+//log out
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
 
 
 /* Get the view item page */
@@ -107,6 +119,9 @@ app.get('/admin/index/listing',function(req,res){
 app.post('/api/request', routes);
 
 app.get('/api/listing', routes);
+
+// Mount all /api routes to index.route.js
+app.use('/api', routes);
 
 
 /* start the server */

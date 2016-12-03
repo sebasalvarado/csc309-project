@@ -11,7 +11,7 @@ router.route('/')
 
   /** POST /api/user - Create a new user */
   //TODO Add VALIDATION TO CREATE A USER
-  .post(userCtrl.create);
+  .post(userCtrl.createUser);
 
 router.route('/:userId')
   /** GET /api/user/:userId - Get a user */
