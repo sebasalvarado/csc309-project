@@ -19,7 +19,7 @@ passport.use('local-login', new LocalStrategy({
         users.findUser(username, req.res, function(user){
             user = JSON.parse(user);
             if (!user.username) return done(null, false, req.flash('loginMessage', 'user does not exists.'));
-            //(!authHelpers.comparePass(password, user.password))
+            //!authHelpers.comparePass(password, user.password)
             if (password != user.password) {
                 console.log(username + ' failed log in. Incorrect password.');
                 return done(null, false, req.flash('loginMessage', 'Oops wrong password.'));

@@ -50,6 +50,7 @@ app.get('/', function (req, res) {
 
 app.get('/main', function(req, res){
   res.render('pages/main.ejs'); // Load main page
+    console.log(req.user);
 });
 
 // show the login form

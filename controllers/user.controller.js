@@ -23,7 +23,7 @@ function findUser(username, res, callback) {
         query.on('row', (row) => {
             results.username = row.username;
             results.password = row.password;
-            results.email = row.email;
+            results.admin = row.admin;
         });
         // After all data is returned, close connection and return results
         query.on('end', () => {
