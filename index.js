@@ -68,6 +68,10 @@ app.get('/view', function(req, res) {
     res.render('pages/view-item');
 });
 
+app.get('/view/:id', function(req, res){
+  res.render('pages/view-item');
+})
+
 /* Get the search item page */
 app.get('/search',function(req, res) {
     res.render('pages/search-item');
