@@ -17,3 +17,9 @@
 #searchBar{
     width: 100%;
 }
+
+#logo {
+  width: 120px;
+  height: 25px;
+  vertical-align: top;
+}

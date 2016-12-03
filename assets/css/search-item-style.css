@@ -6,13 +6,13 @@ h1 {
 
 #data {
   width: 100%;
-  height: 100%; /* change to 100% after loading implemented */
+  height: 100%; /* TODO: change to 100% after loading implemented */
   border: 1px solid black;
 }
 
 #categories {
   width: 100%;
-  height: 550px; /* change to 100% after loading implemented */
+  height: 550px; /*TODO: change to 100% after loading implemented */
   border: 1px solid black;
 }
 
@@ -33,5 +33,5 @@ li {
 }
 
 .medium-top-buffer {
-  padding-top: 30px;
+  /*padding-top: 20px;*/
 }

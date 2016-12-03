@@ -48,6 +48,9 @@ app.get('/', function (req, res) {
     res.render('pages/index.ejs'); // load the index.ejs file
 });
 
+app.get('/main', function(req, res){
+  res.render('pages/main.ejs'); // Load main page
+});
 
 // show the login form
 app.get('/login', function (req, res) {
@@ -67,6 +70,10 @@ app.get('/signup', function (req, res) {
 app.get('/view', function(req, res) {
     res.render('pages/view-item');
 });
+
+app.get('/view/:id', function(req, res){
+  res.render('pages/view-item');
+})
 
 /* Get the search item page */
 app.get('/search',function(req, res) {
