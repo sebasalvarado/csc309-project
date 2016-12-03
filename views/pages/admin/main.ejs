@@ -1,0 +1,35 @@
+<!doctype html>
+    <head>
+      <% include ../../partials/head %>
+    </head>
+    <body>
+    <!-- Main Navigation Bar -->
+    <% include ../../partials/navigation %>
+    <!-- Main jumbotron for a primary messages-->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Share Goods Admin Dashboard</h1>
+        <p>This is the first stop to manage your application. Keep your users happy!</p>
+        <p id="all"><a id= "main" href ="/admin/index/user" class="btn btn-primary btn-lg" href="#" role="button">Start Now &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Listings</h2>
+          <p>Manage all listings. Create, delete and edit listings in the system. Make sure that everything is consistent.</p>
+          <p id="listings"><a  href="/admin/index/listing" class="btn btn-default" role="button">Go Now &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Users</h2>
+          <p>Manage user profiles. Create, delete and edit user profiles. Make sure that you add the correct information.</p>
+          <p id="users"><a  href="/admin/index/user" class="btn btn-default"role="button">Go Now &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
+      <footer>
+        <% include ../../partials/footer %>
+      </footer>
+</html>
