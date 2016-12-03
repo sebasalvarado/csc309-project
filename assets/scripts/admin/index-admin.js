@@ -157,7 +157,11 @@ adminApp.renderListEntry = function(element,index,flag){
   // Add an onClick listener
   list.find("#" + data.id).on('click', function(e){
     // Get the URL that is in value of the attribute
-    console.log("clicked");
+    var result = confirm("Want to delete?");
+    if (result) {
+      var value = $(this).attr("value");
+      var id = $(this).attr("id");
+    }
   });
 }
 /** Function that calls the API and process the results

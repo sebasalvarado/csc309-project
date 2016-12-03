@@ -59,4 +59,32 @@ function create(req, res, next) {
     });
 }
 
-export default {create, list};
+function delete(req, res, next) {
+  const name = req.params.username;
+  const results = [];
+  pg.connect(connectionString, (err, client, done) => {
+     // Handle connection errors
+     if(err) {
+       done();
+       console.log(err);
+       return res.status(500).json({success: false, data: err});
+     }
+     // SQL Query > Delete Data
+    const query = client.query('DELETE FROM ShareGoods.user WHERE username=($1)', [name]);
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
+  });
+}
+
+function listUserName(req,res,next){
+
+}
+
+function update(req,res,next){
+  
+}
+
+export default {create, list,remove};

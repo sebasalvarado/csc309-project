@@ -106,7 +106,6 @@ function remove(req, res, next) {
       return res.json(results);
     });
   });
-   return res.json('ok');
 }
 
  export default {list, create, remove};
