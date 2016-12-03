@@ -35,66 +35,65 @@
    <body>
      <% include ../partials/navigation %>
 
-     <h1>Post A new Listing </h1>
-     <div id="menu">
+     <div class="container">
 
-        <form id="add" action='/api/listing' method="post">
-            <div class="form_element">
-                <label id="email1">
-                    <span class="label">Email :</span>
-                    <input type="email" name="email" required>
-                </label>
-            </div>
-            <div class="form_element">
-                <label id="phone1">
-                    <span class="label">Phone :</span>
-                    <input type="text" name="phone" required>
-                </label>
-            </div>
-            <div class="form_element">
-                <label id="item1">
-                    <span class="label">Item :</span>
-                    <input type="text" name="item" required>
-                </label>
-            </div>
+         <div class="col-sm-6 col-sm-offset-3">
 
-            <div class="form_element">
-                <label id="category1">
-                    <span class="label">Category:</span>
-                    <select name="category">
-                      <option value="Household">Household</option>
-                      <option value="Groceries">Groceries</option>
-                      <option value="Entertainment">Entertainment</option>
-                      <option value="Health And Beauty">Health And Beauty</option>
-                    </select>
-                </label>
-            </div>
+             <h1><span class="fa fa-sign-in"></span> Post New Listing</h1>
 
-            <div class="form_element">
-                <label id="description1">
-                    <span class="label">Description :</span>
-                    <input type="text" name="description" required>
-                </label>
-            </div>
+             <!-- show any messages that come back with authentication -->
 
-            <div class="form_element">
-                <label id="returnDate1">
-                    <span class="label">Return Date:</span>
-                    <input type="date" name="returnDate" required>
-                </label>
-            </div>
+             <!-- LOGIN FORM -->
 
-            <div class="form_element">
-                <label id="location1">
-                    <span class="label">Location :</span>
-                    <input type="text" name="location" required>
-                </label>
-            </div>
+             <form id="add" action='/api/listing' method="post">
 
+                 <div class="form-group">
+                     <label>Email</label>
+                     <input type="email" class="form-control" name="email" required>
+                 </div>
 
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+                 <div class="form-group">
+                     <label>Phone</label>
+                     <input type="text" class="form-control" name="phone" required>
+                 </div>
+
+                 <div class="form-group">
+                     <label>Item</label>
+                     <input type="text" class="form-control" name="item" required>
+                 </div>
+
+                 <div class="form-group">
+                     <label>Category</label>
+                       <select name="category">
+                        <option value="Household">Household</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Health And Beauty">Health And Beauty</option>
+                      </select>
+                 </div>
+
+                 <div class="form-group">
+                     <label>Description</label>
+                     <input type="text" class="form-control" name="description" required>
+                 </div>
+
+                 <div class="form-group">
+                     <label>Return Date</label>
+                     <input type="date" class="form-control" name="returnDate" required>
+                 </div>
+
+                 <div class="form-group">
+                     <label>Location</label>
+                     <input type="text" class="form-control" name="location" required>
+                 </div>
+
+                 <button type="submit" class="btn btn-warning btn-lg">Post</button>
+             </form>
+
+             <hr>
+         </div>
+
+     </div>
 
    </body>
 

@@ -3,6 +3,15 @@ var map;
 var url = window.location.href.split('/');
 var listingid = (url[url.length -1]);
 
+/* Load google maps data, create map */
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+   center: {lat: 0, lng: 0},
+   zoom: 12
+ });
+}
+
+
 /* Query server to get listing information */
 $.get("/api/listing/" + listingid, function(response) {
 
@@ -52,12 +61,12 @@ function displayListing(response) {
 
 }
 
-/* Load google maps data, create map */
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-   center: {lat: 0, lng: 0},
-   zoom: 12
- });
+
+function redirectRequest() {
+  var urlrequest = "/request/" + listingid.toString();
+  console.log(urlrequest);
+  location.replace(urlrequest);
+
 }
 
 /* Load correct map location, helper function */
@@ -67,37 +76,5 @@ function loadMapLocation(latitude, longitude) {
 }
 
 
-/* Submit button to request item */
-$(document).ready(function(){
 
-  $("#requestButton").click(function() {
-
-    /* Submit request to server */
-    postRequest();
-
-  });
-});
-
-
-function postRequest() {
-
-  /* Retrieve all listing information */
-  var listingid = 'test';
-  var requestdate = 'test';
-  var userid = 'test';
-
-  /* Create ajax POST request */
-  $.ajax({
-    url: '/api/request',
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    data: JSON.stringify({
-      'listingid': listingid,
-      'requestdate': requestdate,
-      'userid': userid,
-    }),
-    success: function(response) {
-      alert(response);
-    }
-  });
-}
+/* Populate related items box */

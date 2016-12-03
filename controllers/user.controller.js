@@ -31,7 +31,7 @@ function create(req, res, next) {
         client.query('INSERT INTO ShareGoods.User (username, password, first_name, last_name, phonenumber, address, email) VALUES ($1, $2, $3, $4, $5, $6, $7)',
             [data.username, data.password, data.first_name, data.last_name, data.phonenumber, data.address, data.email]);
         // SQL Query > Select Data
-        const query = client.query('SELECT * FROM ShareGoods.User');
+        const query = client.query('SELECT id FROM ShareGoods.User WHERE username = $1', [data.username]);
         // Stream results back one row at a time
         query.on('row', (row) => {
             results.push(row);
