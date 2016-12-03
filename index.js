@@ -48,6 +48,9 @@ app.get('/', function (req, res) {
     res.render('pages/index.ejs'); // load the index.ejs file
 });
 
+app.get('/main', function(req, res){
+  res.render('pages/main.ejs'); // Load main page
+});
 
 // show the login form
 app.get('/login', function (req, res) {
