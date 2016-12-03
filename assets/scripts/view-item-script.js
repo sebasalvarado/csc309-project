@@ -30,7 +30,6 @@ function displayListing(response) {
   $itemCategory.html("Item Category: " + response[0].category);
 
 
-
   $('#itemDetails').append($item);
   $('#itemDetails').append($itemDescription);
   $('#itemDetails').append($itemCategory);
