@@ -1,7 +1,7 @@
 import express from 'express';
 import validate from 'express-validation';
 
-import listingRatingCtrl from 'listings.ratings.controller';
+import listingRatingCtrl from '../controllers/listings.ratings.controller';
 
 // Initialize the router
 const router = express.Router();
@@ -19,4 +19,6 @@ router.route('/:listingId')
     /** POST Update a given ratingId **/
     .post(listingRatingCtrl.update)
     /** DELETE delete a given ratingId **/
-    .delete(listingCtrl.remove);
+    .delete(listingRatingCtrl.remove);
+
+export default router;

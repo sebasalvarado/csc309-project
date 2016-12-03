@@ -40,7 +40,7 @@ changes while the server is running in your local machine.
 | /api/listing/ratings/| POST | Creates a new listing rating| Parameters should be in query
 | /api/listing/ratings/:listingId| GET | Get a given ratingId from a listing|
 | /api/listing/ratings/:listingId| POST | Update a given listing rating|
-| /api/listing/ratings/:ratingid| DELETE | Delete a given listing rating|
+| /api/listing/ratings/:listingId| DELETE | Delete a given listing rating|
 
 
 ### Accessing DataBase

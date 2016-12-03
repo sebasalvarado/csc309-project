@@ -18,7 +18,7 @@ function get(req,res){
       }
 
       // SQL Query get all listing ratings
-      client.query('SELECT * FROM ShareGoods.listingrating;')
+      const query = client.query('SELECT * FROM ShareGoods.listingrating;');
 
       query.on('row', (row) => {
           results.push(row);
@@ -37,10 +37,9 @@ function get(req,res){
 function create(req,res){
   const results = [];
   const data = {
-      listingId: req.body.listingId,
+      listingId: req.body.listingid,
       rating: req.body.rating,
   }
-
   //Connect to the database
   pg.connect(connectionString,(err,client,done) => {
     // Handle connection errors
@@ -51,8 +50,8 @@ function create(req,res){
     }
 
     //SQL QUery data > INSERT
-    client.query('INSERT INTO ShareGoods.listingrating (listingid,rating,date) VALUES($1,$2,now())',
-    [data.listingid, data.rating]);
+    const query = client.query('INSERT INTO ShareGoods.listingrating (listingid,rating,date) VALUES($1,$2,now())',
+    [data.listingId, data.rating]);
 
     // After all data is returned, close connection and return results
     query.on('end', () => {
@@ -69,19 +68,17 @@ function find(req,res){
     const results = [];
     var params = req.params;
     if(params.listingId){
-      pg.connect(connectionString, (err,client,done)=> (){
+      pg.connect(connectionString, (err,client,done) => {
         if(err){
-          done();
           console.log(err);
-          return res.status(500).json({success: false, data: err});
+          done();
+          return res.sendStatus(500).json({success: false, data: err});
         }
-
         //SELECT query
-        client.query('select s.listingId as listingId, rating, location, item, category' +
-        'from sharegoods.listings s INNER' +
-        'JOIN sharegoods.listingrating b ON s.listingId = b.listingId' + 'where s.listingId = $1;',
+        const query = client.query('select s.listingId as listingId, b.rating as rating, '
+        +'s.location, s.item, s.category' +' from sharegoods.listings s INNER ' +
+        ' JOIN sharegoods.listingrating b ON s.listingId = b.listingId ' + ' where s.listingId = $1;',
         [params.listingId]);
-
         //Send the data row by row
         // Stream results back one row at a time
         query.on('row', (row) => {
@@ -103,15 +100,14 @@ function find(req,res){
 function update(req,res){
       var params = req.params;
       var data = {
-        listingId: req.body.listingId,
         prevRating: req.body.prevRating,
         newRating: req.body.newRating
-      }
+      };
 
       // Produce the query
       pg.connect(connectionString, (err,client, done) => {
-        client.query("UPDATE ShareGoods.listingrating SET rating = $1"+
-        "WHERE listingId = $2 AND rating = $3",[data.listingId,data.prevRating,data.newRating]);
+        const query = client.query("UPDATE ShareGoods.listingrating SET rating = $1"+
+        "WHERE listingId = $2 AND rating = $3",[data.newRating,params.listingId,data.prevRating]);
         // After all data is returned, close connection and return results
         query.on('end', () => {
             done();
@@ -122,15 +118,15 @@ function update(req,res){
 }
 
 /** Remove a given listingId and ranking from a date
- * @param
+ * @param listingId, rating (body)
  */
 function remove(req,res){
   var params = req.params;
   var rating = req.body.rating;
   // Produce the query
   pg.connect(connectionString, (err,client, done) => {
-    client.query("DELETE FROM ShareGoods.listingrating"+
-    "WHERE listingId = $1 AND rating = $2",[params.listingId,rating]);
+    const query = client.query("DELETE FROM ShareGoods.listingrating "+
+    " WHERE listingId = $1 AND rating = $2",[params.listingId,rating]);
     // After all data is returned, close connection and return results
     query.on('end', () => {
         done();

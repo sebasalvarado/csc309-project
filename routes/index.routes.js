@@ -35,7 +35,7 @@ router.use('/request', requestRoutes);
 //router.use('user/ratings', userRatingRoutes);
 
 // mount listing rating routes at /listing/ratings
-//router.use('listing/ratings', listingRatingRoutes);
+router.use('/ratings/listing', listingRatingRoutes);
 
 
 export default router;
