@@ -32,7 +32,7 @@ router.use('/listing', listingRoutes);
 router.use('/request', requestRoutes);
 
 // mount user rating routes at /user/ratings
-//router.use('user/ratings', userRatingRoutes);
+router.use('/ratings/user', userRatingRoutes);
 
 // mount listing rating routes at /listing/ratings
 router.use('/ratings/listing', listingRatingRoutes);

@@ -53,8 +53,8 @@ function create(req,res){
 
     //SQL QUery data > INSERT
     const query = client.query('INSERT INTO ShareGoods.renterrating (listingid,ratings,startdate,user1id,user2id)' +
-     ' VALUES($1,$2,now(),$4,$5)',
-    [data.listingId, data.ratings,data.startdate,data.consumer,data.renter]);
+     ' VALUES($1,$2,now(),$3,$4)',
+    [data.listingId, data.ratings,data.consumer,data.renter]);
 
     // After all data is returned, close connection and return results
     query.on('end', () => {
@@ -79,8 +79,8 @@ function find(req,res){
           return res.sendStatus(500).json({success: false, data: err});
         }
         //SELECT query
-        const query = client.query('select first_name,last_name, phonenumber, email '
-        + ' from sharegoods.user a INNER JOIN sharegoods.renterrating b on user2id = $1;';
+        const query = client.query('select distinct first_name, last_name, phonenumber, email '
+        + ' FROM sharegoods.user INNER JOIN sharegoods.renterrating on user2id = $1;',
         [params.userId]);
         //Send the data row by row
         // Stream results back one row at a time
@@ -98,20 +98,18 @@ function find(req,res){
 }
 
 /** Given a listing Id the entry should be updated
- * @param userId, startdate and newRating
+ * @param userId, listingId, and newRating
  */
 function update(req,res){
       var params = req.params;
       var data = {
-
-        prevRating: req.body.prevRating,
+        listingId: req.body.listingId,
         newRating: req.body.newRating
       };
-
       // Produce the query
       pg.connect(connectionString, (err,client, done) => {
-        const query = client.query("UPDATE ShareGoods.listingrating SET rating = $1"+
-        "WHERE listingId = $2 AND rating = $3",[data.newRating,params.listingId,data.prevRating]);
+        const query = client.query("UPDATE ShareGoods.renterrating SET ratings = $1"+
+        "WHERE listingId = $2 AND user2id = $3;",[data.newRating,data.listingId,params.userId]);
         // After all data is returned, close connection and return results
         query.on('end', () => {
             done();
@@ -121,16 +119,20 @@ function update(req,res){
       });
 }
 
-/** Remove a given listingId and ranking from a date
- * @param listingId, rating (body)
+/** Remove a given entry for a review on a user
+ * @param listingId, user2id,user1id (body)
  */
 function remove(req,res){
-  var params = req.params;
-  var rating = req.body.rating;
+  var params = req.params; //user2id
+  var data = {
+    listingId: req.body.listingid,
+    user: req.body.user
+  };
   // Produce the query
   pg.connect(connectionString, (err,client, done) => {
-    const query = client.query("DELETE FROM ShareGoods.listingrating "+
-    " WHERE listingId = $1 AND rating = $2",[params.listingId,rating]);
+    const query = client.query("DELETE FROM ShareGoods.renterrating "+
+    " WHERE listingId = $1 AND user1id = $2 AND user2id = $3;",
+    [data.listingId,data.user,params.userId]);
     // After all data is returned, close connection and return results
     query.on('end', () => {
         done();

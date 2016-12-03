@@ -12,7 +12,7 @@ router.route('/')
   .post(userRatingCtrl.create);
 
 router.route('/:userId')
-  /** GET Get a given rating for a user **/
+  /** GET Get users who rated a user **/
   .get(userRatingCtrl.find)
   /** POST Update the review of a user **/
   .post(userRatingCtrl.update)
