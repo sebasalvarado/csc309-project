@@ -63,7 +63,7 @@ function displayListing(response) {
 
 
 function redirectRequest() {
-  var urlrequest = "/request/" + listingid;
+  var urlrequest = "/request/" + listingid.toString();
   console.log(urlrequest);
   location.replace(urlrequest);
 

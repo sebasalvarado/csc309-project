@@ -85,7 +85,7 @@ app.get('/listing',function(req, res) {
     res.render('pages/post-new-listing');
 });
 
-app.get('/request',function(req, res) {
+app.get('/request/:id',function(req, res) {
     res.render('pages/product-request');
 });
 
