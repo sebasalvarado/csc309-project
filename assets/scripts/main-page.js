@@ -3,6 +3,11 @@ var shareApp = {};
 // Data Gathered from the api
 var data = {};
 
+
+
+shareApp.getListings = function(item, category, date, now){
+    // It is possible that one or more of the parameters is empty
+}
 /**
  * @param e event that we listened
  */
@@ -17,6 +22,7 @@ shareApp.filter = function(e){
     now = false;
   }
   // perform GET request
+  shareApp.getListings(itemName,category,dateAfter,now);
   // Update data object
   // Render the results into the stream of data
 }
