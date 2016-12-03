@@ -135,7 +135,7 @@ adminApp.renderListEntry = function(element,index,flag){
   }
 
   //Produce header
-  var entry = "<a " +  "value=" + value + "id=" + data.id + " href='#' class='list-group-item'>";
+  var entry = "<a " + " href='#' class='list-group-item'>";
   entry += "<h4 id ='home'class='list-group-item-heading entryLeft'>" ;
   entry += data.second;
   entry += "</h4>";
@@ -147,6 +147,8 @@ adminApp.renderListEntry = function(element,index,flag){
   entry += data.fourth + "</h4>";
   entry += "<h2 class='list-group-item-heading'>";
   entry += data.first + "</h2>";
+  // Add the delete button
+  entry += "<button" + " value=" + value + " id=" + data.id + " type='submit' class='btn btn-default'>Delete</button>";
   entry += "</a>";
 
   //Append it to the list
