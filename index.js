@@ -85,6 +85,10 @@ app.get('/listing',function(req, res) {
     res.render('pages/post-new-listing');
 });
 
+app.get('/admin', function(req,res){
+  res.render('pages/admin/main');
+})
+
 
 /* Definition of Routing of back-end. Should start with /api the path */
 
