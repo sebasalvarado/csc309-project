@@ -19,7 +19,6 @@ function list(req, res){
    // After all data is returned, close connection and return results
    query.on('end', () => {
      done();
-     console.log("queried");
      return res.json(results);
    });
  });
@@ -59,7 +58,7 @@ function create(req, res, next) {
     });
 }
 
-function delete(req, res, next) {
+function remove(req, res, next) {
   const name = req.params.username;
   const results = [];
   pg.connect(connectionString, (err, client, done) => {
@@ -79,12 +78,33 @@ function delete(req, res, next) {
   });
 }
 
-function listUserName(req,res,next){
+/** Query a user by a username **/
+function listUserName(req, res){
+  // Get the username from query
+  var username = req.query.username;
+  const results = [];
+  pg.connect(connectionString, (err, client, done) => {
+   // Handle connection errors
+   if (err) {
+     done();
+     console.log(err);
+     return res.status(500).json({success: false, data: err});
+   }
 
-}
+   const query = client.query("select * from sharegoods.user where username = $1;",[username]);
+   query.on('row', (row) => {
+     results.push(row);
+   });
+   // After all data is returned, close connection and return results
+   query.on('end', () => {
+     done();
+     return res.json(results);
+   });
+ });
+ }
 
 function update(req,res,next){
-  
+  console.log("IMPLEMENT");
 }
 
-export default {create, list,remove};
+export default {create, list,remove,listUserName,update};

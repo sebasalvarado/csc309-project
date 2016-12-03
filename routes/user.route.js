@@ -13,13 +13,13 @@ router.route('/')
   .post(userCtrl.create);
 
 router.route('/:username')
-  /** GET /api/user/:userId - Get a user */
+  /** GET /api/user/:username - Get a user */
   .get(userCtrl.listUserName)
 
   /**POST /api/user/:userId -Update a User*/
   .post(userCtrl.update)
 
   /** DELETE /api/user/:userId -Delete a user*/
-  .delete(userCtrl.delete);
+  .delete(userCtrl.remove);
 
 export default router;
