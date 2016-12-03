@@ -78,7 +78,10 @@ function loginRedirect(req, res, next) {
 
 
 function loginRequired(req, res, next) {
-    if (!req.user) return res.status(401).json({status: 'Please log in'});
+    if (!req.user) {
+        res.redirect('/login');
+        req.flash('loginMessage', 'You are not logged in.')
+    }
     return next();
 }
 

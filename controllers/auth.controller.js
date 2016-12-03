@@ -10,11 +10,10 @@ function login(req, res, next){
 
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
-                console.log('you work');
                 if(user.admin){
-                    return res.redirect('/admin/main');
+                    return res.redirect('/admin/main/' + user.username);
                 }else{
-                    return res.redirect('/main');
+                    return res.redirect('/main/' + user.username);
                 }
             });
         })
@@ -25,10 +24,21 @@ function login(req, res, next){
 
 // process the signup form
 function signup(req, res, next){
-    passport.authenticate('local-signup', {
-        successRedirect: '/view',
-        failureRedirect: '/signup',
-        failureFlash: true })
+    passport.authenticate('local-signup', {failureFlash: true },
+        function(err, user){
+            if (err) { return next(err); }
+
+            if (!user){ return res.redirect('/login')}
+
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+                if(user.admin){
+                    return res.redirect('/admin/main/' + user.username);
+                }else{
+                    return res.redirect('/main/' + user.username);
+                }
+            });
+        })
     (req, res, next);
 }
 
