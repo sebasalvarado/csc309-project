@@ -60,7 +60,7 @@
     phone : req.body.requestdate,
     item : req.body.userid,
 
-    }
+    };
     pg.connect(connectionString, (err, client, done) => {
      // Handle connection errors
      if(err) {

@@ -68,7 +68,7 @@ app.get ('/*', function(req, res, next){
     authHelpers.loginRequired(req, res, next);
 });
 
-app.get('/main', function(req, res){
+app.get('/main/:username', function(req, res){
   res.render('pages/main.ejs'); // Load main page
     console.log(req.user);
 });
@@ -89,7 +89,7 @@ app.get('/view', function(req, res) {
 
 app.get('/view/:id', function(req, res){
   res.render('pages/view-item');
-})
+});
 
 /* Get the search item page */
 app.get('/search',function(req, res) {
@@ -108,11 +108,11 @@ app.get('/request/:id',function(req, res) {
 /* Admin main page */
 app.get('/admin', function(req,res){
   res.render('pages/admin/main');
-})
+});
 /* Admin detailed page */
 app.get('/admin/index/user', function(req,res){
   res.render('pages/admin/index');
-})
+});
 app.get('/admin/index/listing',function(req,res){
   res.render('pages/admin/index');
 });
