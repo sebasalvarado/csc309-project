@@ -6,7 +6,7 @@ const router = express.Router();
 
 /** GET list of all listings in the system**/
 router.route('/')
-  .get(requestCtrl.list)
+  .get(requestCtrl.list, requestCtrl.getByUsername);
 /** POST Add a new listing **/
 
 router.route('/:listingID')

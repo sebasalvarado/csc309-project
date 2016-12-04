@@ -6,6 +6,10 @@
 
 /* List all current requests in database */
  function list(req, res, next) {
+   // If there is a username in the query pass it over
+   if(typeof req.query.username != "undefined"){
+     return next();
+   }
    const results = [];
    const id = req.params.listingID;
    pg.connect(connectionString, (err, client, done) => {
@@ -51,9 +55,33 @@
 
 /**
  * Gets all the requests posted to a given user's products
+  ? username:NAME
  */
-function reqByUsername(req,res,next){
+function getByUsername(req,res,next){
+  const username = req.query.username;
 
+  const results = [];
+  pg.connect(connectionString, (err, client, done) => {
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+     // Query it
+     const query = client.query("select u.first_name as name, u.last_name as last, u.email as email, r.requestdate as dateIn, r.urgency as urgency, r.price as price, r.pickup as pickup " +
+            " from sharegoods.user u inner join sharegoods.requests r on u.id = r.userid where exists(select a.email as email, b.listingId as listingId, b.item as item from sharegoods.user a INNER JOIN sharegoods.listings b on a.email=b.email where a.username = $1 and r.listingId = b.listingId);",[username]);
+     /* Stream results back one row at a time */
+     query.on('row', (row) => {
+       console.log(row);
+       results.push(row);
+     });
+
+     query.on('end', () => {
+       done();
+       return res.json(results);
+     });
+
+  });
 }
 /* Create new item request tuple in database */
  function create(req, res, next) {
@@ -125,4 +153,4 @@ function remove(req, res, next) {
    return res.json('ok');
 }
 
- export default {list, create, remove};
+ export default {list, create, remove, getByUsername};

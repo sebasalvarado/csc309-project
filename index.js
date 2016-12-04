@@ -37,7 +37,6 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 /* Definition of Routing of back-end. Should start with /api the path */
-
 app.use('/api', routes);
 // show home page
 
