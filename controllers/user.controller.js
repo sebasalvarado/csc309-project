@@ -4,7 +4,6 @@ import bcrypt from 'bcryptjs';
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
-
 function list(req, res) {
     console.log("HIT");
     return res.send(200);
@@ -148,4 +147,4 @@ function update(req,res,next){
   console.log("IMPLEMENT");
 }
 
-export default {create, list,remove,listUserName,update, validSignUp};
+export default {createUser, findUser, list,remove,listUserName,update, validSignUp};
