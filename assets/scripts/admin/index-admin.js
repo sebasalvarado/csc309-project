@@ -75,6 +75,9 @@ adminApp.renderListEntry = function(element){
           type: 'DELETE',
           success: function(result) {
             // Do something with the result
+            // Empty the list
+            $("#content").find("#list").empty();
+            // Render it again
             adminApp.populateList(data);
         }
       });
