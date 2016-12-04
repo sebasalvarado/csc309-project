@@ -1,14 +1,14 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'start' ]
-2 info using npm@3.10.9
-3 info using node@v7.1.0
+2 info using npm@3.10.8
+3 info using node@v6.9.1
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle ShareGoods@1.0.0~prestart: ShareGoods@1.0.0
 6 silly lifecycle ShareGoods@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle ShareGoods@1.0.0~start: ShareGoods@1.0.0
 8 verbose lifecycle ShareGoods@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle ShareGoods@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/sebastianalvarado/Desktop/University_of_Toronto/Third_Year/CSC309_WebProgramming/group4/node_modules/.bin:/Users/sebastianalvarado/anaconda2/bin://anaconda/bin:/Users/sebastianalvarado/.sdkman/candidates/grails/current/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Library/TeX/texbin
-10 verbose lifecycle ShareGoods@1.0.0~start: CWD: /Users/sebastianalvarado/Desktop/University_of_Toronto/Third_Year/CSC309_WebProgramming/group4
+9 verbose lifecycle ShareGoods@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/radhika/Documents/CSC309/group4/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle ShareGoods@1.0.0~start: CWD: /Users/radhika/Documents/CSC309/group4
 11 silly lifecycle ShareGoods@1.0.0~start: Args: [ '-c', 'gulp serve' ]
 12 silly lifecycle ShareGoods@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle ShareGoods@1.0.0~start: Failed to exec start script
@@ -20,14 +20,14 @@
 14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at ChildProcess.emit (events.js:191:7)
-14 verbose stack     at maybeClose (internal/child_process.js:885:16)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid ShareGoods@1.0.0
-16 verbose cwd /Users/sebastianalvarado/Desktop/University_of_Toronto/Third_Year/CSC309_WebProgramming/group4
-17 error Darwin 15.4.0
+16 verbose cwd /Users/radhika/Documents/CSC309/group4
+17 error Darwin 14.5.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "start"
-19 error node v7.1.0
-20 error npm  v3.10.9
+19 error node v6.9.1
+20 error npm  v3.10.8
 21 error code ELIFECYCLE
 22 error ShareGoods@1.0.0 start: `gulp serve`
 22 error Exit status 1

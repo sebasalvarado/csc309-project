@@ -8,10 +8,13 @@ const router = express.Router();
 router.route('/')
   .get(requestCtrl.list)
 /** POST Add a new listing **/
-  .post(requestCtrl.create);
 
-router.route('/:requestID')
+router.route('/:listingID')
+
   .get(requestCtrl.list)
+
+  .post(requestCtrl.create)
+
   .delete(requestCtrl.remove);
 
 export default router;
