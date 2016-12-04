@@ -14,6 +14,6 @@ searchApp.init = function(){
 
 $(document).ready(function() {
   // Add on change or click listener to the date picker
-  console.log("loaded");
+  console.log("navbar loaded");
   searchApp.init();
 });

@@ -1,48 +1,51 @@
 <!-- views/main.ejs -->
 <!-- Main Page of our Application. Listing Feed, filtering and information -->
 <html lang="en">
-  <head>
+<head>
     <% include ../partials/head %>
     <!-- CSS Styling for page -->
     <link rel="stylesheet" href="../css/home-page-style.css">
     <!-- JS Files for the page -->
-    <script src="../../assets/scripts/main-page.js"> </script>
-  </head>
-  <body>
-    <div class="container">
-      <div id="navBar">
+    <script src="../../assets/scripts/main-page.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="navBar">
         <% include ../partials/navigation %>
-      </div>
+    </div>
 
-      <div class="row">
+    <div class="row">
         <div id="filter" class="col-md-2">
-          <form id="selectionFilter">
-            <div class="form-group">
-              <label for="item">Item Name</label>
-              <input type="text" class="form-control" id="item" placeholder="e.g Screwdriver">
-            </div>
-            <div class="form-group">
-              <label for="category">Category</label>
-              <input type="text" class="form-control" id="category" placeholder="e.g Household">
-            </div>
-            <div class="form-group">
-              <label for="postedAfter">Posted After</label>
-              <input type="date" id="postedAdter">
-              <p class="help-block"> Items posted after a certain date. </p>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input id="availNow" type="checkbox" value="true"> Available Now
-              </label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+            <form id="selectionFilter">
+                <div class="form-group">
+                    <label for="item">Item Name</label>
+                    <input type="text" class="form-control" id="item" placeholder="e.g Screwdriver">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" placeholder="e.g Household">
+                </div>
+                <div class="form-group">
+                    <label for="postedAfter">Posted After</label>
+                    <input type="date" id="postedAdter">
+                    <p class="help-block"> Items posted after a certain date. </p>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input id="availNow" type="checkbox" value="true"> Available Now
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
+
         <div id="feed" class="col-md-6">
+
         </div>
+
         <div id="details" class="col-md-4">
         </div>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
