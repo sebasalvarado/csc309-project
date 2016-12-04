@@ -71,8 +71,7 @@ function createUser(req, callback) {
 
 
 function loginRedirect(req, res, next) {
-    if (req.user) return res.status(401).json(
-        {status: 'You are already logged in'});
+    if (req.user) return res.status(401).redirect('main/' + req.user.username);
     return next();
 }
 
