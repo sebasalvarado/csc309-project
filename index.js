@@ -70,7 +70,6 @@ app.get('/main', function (req,res){
 
 app.get('/main/:username', function(req, res){
   res.render('pages/main.ejs', {username:req.params.username}); // Load main page
-    console.log(req.user);
 });
 
 
