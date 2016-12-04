@@ -48,10 +48,6 @@ app.get('/', function (req, res) {
     res.render('pages/index.ejs'); // load the index.ejs file
 });
 
-app.get('/main/:username', function(req, res){
-  res.render('pages/main.ejs'); // Load main page
-});
-
 // show the login form
 app.get('/login', function (req, res) {
     // render the page and pass in any flash data if it exists
@@ -80,28 +76,24 @@ app.get('/logout', function(req, res){
     res.redirect('/');
 });
 
-
-
 /* Get the view item page */
-app.get('/view', function(req, res) {
-    res.render('pages/view-item');
-});
 
-app.get('/view/:id', function(req, res){
+app.get('/:username/view/:id', function(req, res){
   res.render('pages/view-item');
 });
 
 /* Get the search item page */
-app.get('/search',function(req, res) {
+app.get('/:usernmae/search',function(req, res) {
     res.render('pages/search-item');
 });
 
 /* Get the post new listing page */
-app.get('/listing',function(req, res) {
+app.get('/:username/listing',function(req, res) {
     res.render('pages/post-new-listing');
 });
 
-app.get('/request/:id',function(req, res) {
+/* Get the request a listing page */
+app.get('/:username/request/:id',function(req, res) {
     res.render('pages/product-request');
 });
 
@@ -113,19 +105,21 @@ app.get('/admin', function(req,res){
 app.get('/admin/index/user', function(req,res){
   res.render('pages/admin/index');
 });
+
 app.get('/admin/index/listing',function(req,res){
   res.render('pages/admin/index');
 });
 
 /* Definition of Routing of back-end. Should start with /api the path */
 
+// Mount all /api routes to index.route.js
+app.use('/api', routes);
+
 /* Handle requests */
 app.post('/api/request', routes);
 
 app.get('/api/listing', routes);
 
-// Mount all /api routes to index.route.js
-app.use('/api', routes);
 
 
 /* start the server */
