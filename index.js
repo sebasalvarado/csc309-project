@@ -83,7 +83,7 @@ app.get('/:username/view/:id', function(req, res){
 });
 
 /* Get the search item page */
-app.get('/:usernmae/search',function(req, res) {
+app.get('/:username/search',function(req, res) {
     res.render('pages/search-item');
 });
 
@@ -97,6 +97,14 @@ app.get('/:username/request/:id',function(req, res) {
     res.render('pages/product-request');
 });
 
+/* Get the my requests page */
+app.get('/:username/my-requests',function(req,res){
+  res.render('pages/my-product-requests');
+})
+/* Get the requests submitted to my products*/
+app.get('/:username/requests',function(req,res){
+  res.render('pages/requests');
+})
 /* Admin main page */
 app.get('/admin', function(req,res){
   res.render('pages/admin/main');
