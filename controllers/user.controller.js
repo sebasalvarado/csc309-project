@@ -59,9 +59,6 @@ function createUser(req, res, callback) {
         const query = client.query('INSERT INTO ShareGoods.User (username, password, first_name, last_name, phonenumber, address, email) VALUES ($1, $2, $3, $4, $5, $6, $7)',
             [data.username, data.password, data.first_name, data.last_name, data.phonenumber, data.address, data.email]);
 
-        // SQL Query > Select Data
-        const query = client.query('SELECT id FROM ShareGoods.User WHERE username = $1', [data.username]);
-
         // After all data is returned, close connection and return results
         query.on('end', () => {
             done();

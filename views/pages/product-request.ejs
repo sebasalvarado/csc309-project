@@ -8,9 +8,12 @@
     <style>
         body        { padding-top:80px; }
     </style>
+    <%include ../partials/head %>
+    <script src="../assets/scripts/post-request.js"> </script>
 </head>
 <body>
-<div class="container">
+  <% include ../partials/navigation %>
+  <div class="container">
 
     <div class="col-sm-6 col-sm-offset-3">
 
@@ -20,21 +23,7 @@
 
         <!-- REQUEST FORM -->
 
-        <form id="request" action='/api/request' method="post">
-          <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" name="email" required>
-          </div>
-
-          <div class="form-group">
-              <label>Phone</label>
-              <input type="number" class="form-control" name="phone" required>
-          </div>
-
-          <div class="form-group">
-              <label>Address</label>
-              <input type="text" class="form-control" name="address" required>
-          </div>
+        <form id="request" method="post">
 
           <div class="form-group">
               <label>Urgency</label>

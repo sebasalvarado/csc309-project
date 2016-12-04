@@ -52,15 +52,18 @@
 
 /* Create new item request tuple in database */
  function create(req, res, next) {
-    res.send("ay");
 
     const results = [];
-    const data = {
-    email : req.body.listingid,
-    phone : req.body.requestdate,
-    item : req.body.userid,
+    const id_1 = req.params.listingID;
+    const id_2 = req.user.id;
 
+    const data = {
+    urgency : req.body.urgency,
+    price : req.body.price,
+    pickup : req.body.pickup_location,
+    dropoff : req.body.dropOff_location
     };
+
     pg.connect(connectionString, (err, client, done) => {
      // Handle connection errors
      if(err) {
@@ -69,23 +72,23 @@
        return res.status(500).json({success: false, data: err});
      }
 
-     /* SQL Query > Insert Data */
-     client.query('INSERT INTO ShareGoods.requests (listingid, requestdate, userid) VALUES ($1, $2, $3)',
-     [data.listingid, data.requestdate, data.userid]);
+    if (typeof id_1 != "undefined" && typeof id_2 != "undefined") {
+      /* SQL Query > Insert Data */
+      client.query('INSERT INTO ShareGoods.requests (listingid, userid, urgency, pickup, dropoff, price) VALUES ($1, $2, $3, $4, $5, $6)',
+      [id_1, id_2, data.urgency, data.pickup, data.dropoff, data.price]);
 
-     /* SQL Query > Select Data */
-     const query = client.query('SELECT * FROM ShareGoods.requests');
-     /* Stream results back one row at a time */
-     query.on('row', (row) => {
-       results.push(row);
-     }
-   );
+      /* SQL Query > Select Data */
+      const query = client.query('SELECT * FROM ShareGoods.requests');
+      /* Stream results back one row at a time */
+      query.on('row', (row) => {
+        results.push(row);
+      });
 
-     /* After all data is returned, close connection and return results */
-     query.on('end', () => {
-       done();
-       return res.json(results);
-     });
+      query.on('end', () => {
+        done();
+        return res.json(results);
+      });
+    }
    });
  }
 
