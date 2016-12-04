@@ -44,8 +44,6 @@ function displayListing(response) {
   $('#itemDetails').append($itemCategory);
 
 
-
-
   /* Set google maps location */
   var geocoder = new google.maps.Geocoder();
   var address = 'toronto'; // change to response.location when relevent location

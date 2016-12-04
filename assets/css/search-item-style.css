@@ -16,6 +16,26 @@ h1 {
   border: 1px solid black;
 }
 
+#itemDescription {
+  text-align: center;
+
+}
+
+#itemImage {
+  /*margin-left: auto;*/
+  margin-right: auto;
+  height: 70px;
+  width: 300px;
+}
+
+#itemButton {
+  height: 80%;
+  width:20%;
+}
+
+#itemDesc {
+}
+
 ul {
   list-style-type: none;
   padding: 8px;

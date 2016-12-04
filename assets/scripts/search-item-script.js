@@ -1,3 +1,6 @@
+var url = window.location.href.split('/');
+var username = (url[url.length -2]);
+
 $(document).ready(function() {
 
     $("#navigation").find("#submitId").submit(function(event){
@@ -6,7 +9,6 @@ $(document).ready(function() {
       /* Submit request to server */
       $.get("/api/listing", function(response) {
             console.log(response);
-
             displayListings(response);
 
       });
@@ -25,33 +27,37 @@ function displayListings(response) {
   for (var i = 0; i < response.length; i++) {
 
     /* */
-    var $div = $("<div>", {id: "foo", "class": "a",
+    var $div = $("<div>", {id: "itemDesc", "class": "a",
     "style": "border:1px solid black; padding:40px"});
 
-    /* Create description tag for item */
-    var text = "Item: " + response[i].item +
-    " , location: "  + response[i].location
-    + "email: " + response[i].email
-    + "listingid: " + response[i].listingid;
-    $div.text(text);
+    var itemImage = $('<img id="itemImage" src="../images/logo.png">');
+
+    var itemDescription = $('<p id="itemDescription">');
+    itemDescription.text("Item: " + response[i].item);
+    $div.append(itemDescription);
+
+    var itemLocation = $('<p id="itemDescription">');
+    itemLocation.text("Location: " + response[i].location);
+    $div.append(itemLocation);
+
 
     var id = response[i].listingid;
-    var url = "/view/" + id.toString();
+    var url = username.toString() + "/view/" + id.toString();
 
     /* Attach button to view more information */
-    var $button = $("<button>");
+    var $button = $('<button id="itemButton">');
     $button.text("More Information");
     $button.click( function() {
 
     /* redirect user to item page */
     event.preventDefault();
-    console.log(url);
-
     location.replace(url);
 
     });
 
     $div.append($button);
+    // $div.append(itemImage);
+
 
     $("#data").append($div);
 
