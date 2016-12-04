@@ -49,7 +49,12 @@
   });
  }
 
+/**
+ * Gets all the requests posted to a given user's products
+ */
+function reqByUsername(req,res,next){
 
+}
 /* Create new item request tuple in database */
  function create(req, res, next) {
 

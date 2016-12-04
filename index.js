@@ -36,8 +36,9 @@ app.use(session({secret: 'sharingiscaring'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+/* Definition of Routing of back-end. Should start with /api the path */
 
-
+app.use('/api', routes);
 // show home page
 
 /* Definition for Routing of Views */
@@ -121,16 +122,6 @@ app.get('/admin/index/user', function(req,res){
 app.get('/admin/index/listing',function(req,res){
   res.render('pages/admin/index');
 });
-
-/* Definition of Routing of back-end. Should start with /api the path */
-
-// Mount all /api routes to index.route.js
-app.use('/api', routes);
-
-/* Handle requests */
-app.post('/api/request', routes);
-
-app.get('/api/listing', routes);
 
 
 
