@@ -1,5 +1,4 @@
 var requestApp = {};
-var data ={}
 /** Helper function that renders one list entry in the list view
  *
  */
@@ -48,10 +47,8 @@ requestApp.renderListEntry = function(element){
 requestApp.getResults = function(query){
   $.get(query,function(response){
     // Data successfully gathered
-    data = response;
-    console.log(response);
     // Send it to populate list
-    requestApp.populateList(data);
+    requestApp.populateList(response);
   });
 }
 
@@ -59,10 +56,19 @@ requestApp.getResults = function(query){
  * @param data is an array with all user objects
  */
 requestApp.populateList = function(data){
-
+  console.log(data);
   // Check if game is an array or an object
+  console.log(data.length);
   if(data instanceof Array){
     // Produce an entry for every element
+    console.log(data.length);
+    if(data.length == 0){
+      //Render one list element with no matches
+      var entry = "<a href='#' class='list-group-item active'>";
+      entry += "<h4 class='list-group-item-heading'>No requests yet </h4></a>";
+      $(".container").find("#content").find(".list-group").append(entry);
+      return;
+    }
     var i;
     for(i = 0; i < data.length; i++){
       // Produce one list entry per game
@@ -82,7 +88,6 @@ requestApp.init = function(username){
   $("#content").find("#description").empty();
   $("#content").find("#headerType").append("<h2> Requests on My Products</h2>");
   var query = '/api/request?username='+ username;
-  console.log(query);
   requestApp.getResults(query);
 
 }
@@ -90,6 +95,5 @@ requestApp.init = function(username){
 $(document).ready(function() {
   // Add on change or click listener to the date picker
   var username = window.location.pathname.split("/")[1];
-  console.log(username);
   requestApp.init(username);
 });

@@ -7,6 +7,7 @@ import requestRoutes from './request.route';
 //import authRoutes from './auth.route';
 import userRatingRoutes from './userRating.route';
 import listingRatingRoutes from './listingRating.route';
+import userRequestRoutes from './myrequest.route';
 
 
 const router = express.Router();
@@ -37,5 +38,6 @@ router.use('/ratings/user', userRatingRoutes);
 // mount listing rating routes at /listing/ratings
 router.use('/ratings/listing', listingRatingRoutes);
 
+router.use('/myrequest', userRequestRoutes);
 
 export default router;
