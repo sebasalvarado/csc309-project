@@ -64,6 +64,10 @@ app.get ('/*', function(req, res, next){
     authHelpers.loginRequired(req, res, next);
 });
 
+app.get('/main', function (req,res){
+   res.redirect('main/' + req.user.username);
+});
+
 app.get('/main/:username', function(req, res){
   res.render('pages/main.ejs'); // Load main page
     console.log(req.user);
