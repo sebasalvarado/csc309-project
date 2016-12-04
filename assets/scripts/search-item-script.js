@@ -1,5 +1,4 @@
-var url = window.location.href.split('/');
-var username = (url[url.length -2]);
+var username = window.location.pathname.split("/")[1];
 
 $(document).ready(function() {
 
@@ -52,7 +51,6 @@ function displayListings(response) {
     /* redirect user to item page */
     event.preventDefault();
     location.replace(url);
-
     });
 
     $div.append($button);
