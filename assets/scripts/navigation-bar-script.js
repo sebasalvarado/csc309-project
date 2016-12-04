@@ -5,11 +5,9 @@ searchApp.init = function(){
   $("#navigation").find("#submitId").submit(function(e){
     console.log("hit");
     e.preventDefault();
-    $.get('/api/listing',function(res){
-      console.log(res);
-    });
+    var username = window.location.pathname.split("/")[1];
+    window.location.href = "http://localhost:3000/" + username + "/search";
   });
-
 }
 
 $(document).ready(function() {
