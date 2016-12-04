@@ -121,6 +121,7 @@ app.get('/admin/index/user', function(req,res){
 
 app.get('/admin/index/listing',function(req,res){
   res.render('pages/admin/index');
+
 });
 
 
