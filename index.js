@@ -69,7 +69,7 @@ app.get('/main', function (req,res){
 });
 
 app.get('/main/:username', function(req, res){
-  res.render('pages/main.ejs'); // Load main page
+  res.render('pages/main.ejs', {username:req.params.username}); // Load main page
     console.log(req.user);
 });
 
@@ -83,31 +83,31 @@ app.get('/logout', function(req, res){
 /* Get the view item page */
 
 app.get('/:username/view/:id', function(req, res){
-  res.render('pages/view-item');
+  res.render('pages/view-item',{username: req.params.username});
 });
 
 /* Get the search item page */
 app.get('/:username/search',function(req, res) {
-    res.render('pages/search-item');
+    res.render('pages/search-item',{username:req.params.username});
 });
 
 /* Get the post new listing page */
 app.get('/:username/listing',function(req, res) {
-    res.render('pages/post-new-listing');
+    res.render('pages/post-new-listing',{username:req.params.username});
 });
 
 /* Get the request a listing page */
 app.get('/:username/request/:id',function(req, res) {
-    res.render('pages/product-request');
+    res.render('pages/product-request',{username:req.params.username});
 });
 
 /* Get the my requests page */
 app.get('/:username/my-requests',function(req,res){
-  res.render('pages/my-product-requests');
+  res.render('pages/my-product-requests', {username: req.param.username});
 })
 /* Get the requests submitted to my products*/
 app.get('/:username/requests',function(req,res){
-  res.render('pages/requests');
+  res.render('pages/requests',{username:req.params.username});
 })
 /* Admin main page */
 app.get('/admin', function(req,res){

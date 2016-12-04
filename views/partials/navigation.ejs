@@ -16,18 +16,17 @@
        </div>
        <div class="navbar-collapse collapse">
          <ul class="nav navbar-nav navbar-left">
-           <% var username = window.location.pathname.split("/")[1] %>
            <li><a href="/main/<%= username%>">Home</a></li>
            <li><a href="/<%= username %>/requests">Requests</a></li>
            <li class="dropdown">
              <a class="dropdown-toggle" role ="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" > Actions <span class="caret"></span></a>
              <ul class="dropdown-menu">
-               <li><a href="/listing">Add Listing</a></li>
-               <li><a href="/search"> Custom Product Search</a></li>
-               <li><a href=""> My Requests </a></li>
+               <li><a href="/<%= username %>/listing">Add Listing</a></li>
+               <li><a href="/<%= username %>/search"> Custom Product Search</a></li>
+               <li><a href="/<%= username %>/my-requests"> My Requests </a></li>
              </ul>
            </li>
-           <li><a href="/main">Services</a></li>
+           <li><a href="/main/<%= username %>">Services</a></li>
          </ul>
          <form id ="submitId" class="navbar-form navbar-left" action='/api/listing' method="get">
            <div class="form-group">
@@ -36,6 +35,13 @@
            </div>
          </form>
          <ul class="nav navbar-nav navbar-right">
+           <li class="dropdown">
+             <a class="dropdown-toggle" role ="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" > Reviews <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="/<%= username %>/listing-reviews">My Product Reviews</a></li>
+               <li><a href="/<%= username %>/my-reviews"> My Reviews </a></li>
+             </ul>
+           </li>
            <li><a href="/logout"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Sign Out</a></li>
          </ul>
        </div>
