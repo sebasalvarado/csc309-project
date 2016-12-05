@@ -72,6 +72,11 @@ app.get('/main/:username', function(req, res){
   res.render('pages/main.ejs', {username:req.params.username}); // Load main page
 });
 
+app.get('/:username/profile', function(req, res){
+  res.render('pages/profile.ejs', {username:req.params.username}); // Load main page
+});
+
+
 
 //log out
 app.get('/logout', function(req, res){
