@@ -11,6 +11,9 @@ router.route('/login')
 router.route('/signup')
     .post(authHelpers.loginRedirect, authCtrl.signup);
 
+router.route('/*')
+    .get(authHelpers.loginRedirect);
+
 module.exports = router;
 
 export default router;
