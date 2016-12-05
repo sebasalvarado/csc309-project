@@ -68,11 +68,12 @@ shareApp.getRating = function (id){
  */
 shareApp.filter = function (e) {
     // Get the values of every field
-    var form = $(".container").find(".row").find("#selectionFilter");
-    var itemName = form.find("#item").val();
-    var category = form.find("#category").val();
-    var dateAfter = form.find("#postedAfter").val();
-    var now = form.find('#availNow:checked').val();
+    var header = $(".container").find(".row").find("#selectionFilter");
+    var itemName = header.find("#item").val();
+    var category = header.find("#category").val();
+    var dateAfter = header.find("#postedAfter");
+    console.log(dateAfter.val());
+    var now = header.find('#availNow:checked').val();
     if (typeof now == 'undefined') {
         now = false;
     }
@@ -80,6 +81,7 @@ shareApp.filter = function (e) {
     $("#feed").empty();
     // Update data object
     var query = '/api/listing?item=' + itemName + "&category="+ category + "&date=" + dateAfter + "&now=" + now;
+    console.log(query);
     // Render the results into the stream of data
     shareApp.getlFilterListing(
       function (dataListings) {
@@ -101,7 +103,12 @@ shareApp.filter = function (e) {
 // Function that sets the event callbacks to the form
 shareApp.init = function () {
     // Callback for the filtering form
-    //$(".container").find(".row").find("#selectionFilter").submit(shareApp.filter);
+
+    $(".container").find(".row").find("#selectionFilter").submit(function(e){
+      e.preventDefault();
+      shareApp.filter(e);
+    })
+    //.submit(shareApp.filter);
 
     //populate listings to be rendered
     shareApp.getListings(function (dataListings) {
