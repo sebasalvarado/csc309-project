@@ -14,7 +14,6 @@ adminApp.renderListEntry = function(element){
     description: element.description,
     location: element.location
   };
-  console.log(data);
   //Produce header
   var entry = "<a " + " href='#' class='list-group-item'>";
   entry += "<h4 class='list-group-item-heading entryLeft'>item: " ;
@@ -32,13 +31,12 @@ adminApp.renderListEntry = function(element){
   entry += data.phone + "</h4>";
   entry += "<h2 class='list-group-item-heading'> location: ";
   entry += data.location + "</h2>";
-  entry += "<button" + " id=" + data.id + " type='submit' class='btn btn-default'>Delete</button>";
+  entry += "<button" + " id=" + data.id + " type='submit' class='btn btn-default'>View</button>";
   // Add the delete button
   entry += "</a>";
 
   //Append it to the list
   var list = $(".container").find(".col-md-10").find(".list-group");
-  console.log(list);
   list.append(entry);
   list.find("#" + data.id).on('click', function(e){
     // Get the URL that is in value of the attribute
@@ -46,7 +44,8 @@ adminApp.renderListEntry = function(element){
     // Redirecto to the path we Want
     var username = window.location.pathname.split('/')[1];
     var path = "/" + username + "/view/" + id;
-    window.location.href(path);
+    console.log(path);
+    window.location = (path);
   });
 }
 
@@ -57,7 +56,6 @@ adminApp.getResults = function(query){
   $.get(query,function(response){
     // Data successfully gathered
     // Send it to populate list
-    console.log(response);
     adminApp.populateList(response);
   });
 }
