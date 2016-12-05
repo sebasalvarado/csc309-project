@@ -1,7 +1,7 @@
 <head>
   <!-- CSS styling for page -->
-  <link rel="stylesheet" href="../css/navigation-bar-style.css">
-  <script src="../assets/scripts/navigation-bar-script.js"> </script>
+  <link rel="stylesheet" href="/css/navigation-bar-style.css">
+  <script src="/scripts/navigation-bar-script.js"> </script>
 
 </head>
 <nav id ="navigation" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -27,7 +27,7 @@
                <li><a href="/<%= username %>/my-requests"> My Requests </a></li>
              </ul>
            </li>
-           <li><a href="/main/<%= username %>">Services</a></li>
+           <li><a href="/main/<%= username %>" onclick="services()">Services</a></li>
          </ul>
          <form id ="submitId" class="navbar-form navbar-left">
            <div class="form-group">
@@ -37,11 +37,7 @@
          </form>
          <ul class="nav navbar-nav navbar-right">
            <li class="dropdown">
-             <a class="dropdown-toggle" role ="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" > Reviews <span class="caret"></span></a>
-             <ul class="dropdown-menu">
-               <li><a href="/<%= username %>/listing-reviews">My Product Reviews</a></li>
-               <li><a href="/<%= username %>/my-reviews"> My Reviews </a></li>
-             </ul>
+             <li><a href="/<%= username %>/profile">Profile</a></li>
            </li>
            <li><a href="/logout"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Sign Out</a></li>
          </ul>
