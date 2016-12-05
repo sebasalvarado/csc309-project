@@ -3,7 +3,6 @@ var map;
 var url = window.location.href.split('/');
 var listingid = (url[url.length -1]);
 var username = window.location.pathname.split("/")[1];
-alert(username);
 
 
 /* Load google maps data, create map */
@@ -49,7 +48,7 @@ function displayListing(response) {
 
   /* Set google maps location */
   var geocoder = new google.maps.Geocoder();
-  var address = 'toronto'; // change to response.location when relevent location
+  var address = response[0].location; // change to response.location when relevent location
 
   geocoder.geocode( { 'address': address}, function(results, status) {
 
