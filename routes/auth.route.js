@@ -6,10 +6,10 @@ const authHelpers = require('../auth/auth_helpers');
 /** POST /api/auth/login - Returns token if correct username and password **/
 
 router.route('/login')
-  .post(authHelpers.loginRedirect, authCtrl.login);
+  .post(authCtrl.login);
 
 router.route('/signup')
-    .post(authHelpers.loginRedirect, authCtrl.signup);
+    .post(authCtrl.signup);
 
 router.route('/*')
     .get(authHelpers.loginRedirect);

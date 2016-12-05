@@ -60,20 +60,14 @@ app.get('/signup', function (req, res) {
     res.render('pages/signup.ejs', {message: req.flash('signupMessage')});
 });
 
-app.get ('/*', function(req, res, next){
-    authHelpers.loginRequired(req, res, next);
-});
 
-app.get('/main', function (req,res){
-   res.redirect('main/' + req.user.username);
-});
 
 app.get('/:username/main', function(req, res){
-  res.render('pages/main.ejs', {username:req.params.username}); // Load main page
+  res.render('pages/main.ejs', {username:req.user.username}); // Load main page
 });
 
 app.get('/:username/profile', function(req, res){
-  res.render('pages/profile.ejs', {username:req.params.username}); // Load main page
+  res.render('pages/profile.ejs', {username:req.user.username}); // Load main page
 });
 
 
@@ -87,31 +81,31 @@ app.get('/logout', function(req, res){
 /* Get the view item page */
 
 app.get('/:username/view/:id', function(req, res){
-  res.render('pages/view-item',{username: req.params.username});
+  res.render('pages/view-item',{username: req.user.username});
 });
 
 /* Get the search item page */
 app.get('/:username/search',function(req, res) {
-    res.render('pages/search-item',{username:req.params.username});
+    res.render('pages/search-item',{username:req.user.username});
 });
 
 /* Get the post new listing page */
 app.get('/:username/listing',function(req, res) {
-    res.render('pages/post-new-listing',{username:req.params.username});
+    res.render('pages/post-new-listing',{username:req.user.username});
 });
 
 /* Get the request a listing page */
 app.get('/:username/request/:id',function(req, res) {
-    res.render('pages/product-request',{username:req.params.username});
+    res.render('pages/product-request',{username:req.user.username});
 });
 
 /* Get the my requests page */
 app.get('/:username/my-requests',function(req,res){
-  res.render('pages/my-product-requests', {username: req.param.username});
+  res.render('pages/my-product-requests', {username: req.user.username});
 })
 /* Get the requests submitted to my products*/
 app.get('/:username/requests',function(req,res){
-  res.render('pages/requests',{username:req.params.username});
+  res.render('pages/requests',{username:req.user.username});
 })
 /* Admin main page */
 app.get('/admin', function(req,res){

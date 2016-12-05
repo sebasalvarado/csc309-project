@@ -28,14 +28,14 @@ function signup(req, res, next){
         function(err, user){
             if (err) { return next(err); }
 
-            if (!user){ return res.redirect('/login')}
+            if (!user){ return res.redirect('/signup')}
 
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
                 if(user.admin){
                     return res.redirect('/admin');
                 }else{
-                    return res.redirect('/' + user.username + '/main/');
+                    return res.redirect('/login');
                 }
             });
         })
