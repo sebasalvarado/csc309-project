@@ -66,11 +66,12 @@ function create(req,res){
 
 /**
  * Returns the ratings for a specific user that the user requests
- * @param userId
+ * @param username
  */
 function find(req,res){
     const results = [];
-    var params = req.params;
+    var username = req.params;
+
     if(params.userId){
       pg.connect(connectionString, (err,client,done) => {
         if(err){
@@ -80,7 +81,7 @@ function find(req,res){
         }
         //SELECT query
         const query = client.query('select distinct first_name, last_name, phonenumber, email '
-        + ' FROM sharegoods.user INNER JOIN sharegoods.renterrating on user2id = $1;',
+        + ' FROM sharegoods.user a INNER JOIN sharegoods.renterrating b on user2id = $1;',
         [params.userId]);
         //Send the data row by row
         // Stream results back one row at a time
