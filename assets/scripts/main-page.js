@@ -27,7 +27,13 @@ shareApp.populateListings = function (listings) {
 
             let category = $('<p>').text(listings[i].category);
 
-            let rating = $('<p>').text('Recent Rating: ' + listings[i].rating + ' stars');
+            let rating = $('<p>').text('Recent Rating: ' + listings[i].rating + '\u2605');
+
+            let viewBtn = $('<Button>').text('View Item');
+                viewBtn.click(function(){
+                    const username = window.location.pathname.split("/")[2];
+                    window.location.href = '/' + username+ "/view/" + listings[i].id;
+                });
 
             let listing = $('<div>')
                 .addClass('listing')
@@ -35,7 +41,10 @@ shareApp.populateListings = function (listings) {
                 .append(img)
                 .append(description)
                 .append(category)
-                .append(rating);
+                .append(rating)
+                .append(viewBtn);
+
+
 
             $('#feed').append(listing);
         }
@@ -82,6 +91,7 @@ shareApp.init = function () {
             listing.description = dataListings[i].description;
             listing.category = dataListings[i].category;
             listing.rating = 1;
+            listing.id = dataListings[i].listingid;
 
             listings.push(listing);
 
