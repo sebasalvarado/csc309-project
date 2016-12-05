@@ -3,6 +3,12 @@ let shareApp = {};
 // Data Gathered from the api
 let data = {};
 
+shareApp.getlFilterListing = function(callback,query){
+  $.get(query, function(response){
+    data.listings = response;
+    callback(response);
+  });
+}
 
 shareApp.getListings = function (callback) {
     // It is possible that one or more of the parameters is empty
@@ -31,7 +37,7 @@ shareApp.populateListings = function (listings) {
 
             let viewBtn = $('<Button>').text('View Item');
                 viewBtn.click(function(){
-                    const username = window.location.pathname.split("/")[1];
+                    const username = window.location.pathname.split("/")[2];
                     window.location.href = '/' + username+ "/view/" + listings[i].id;
                 });
 
@@ -71,9 +77,9 @@ shareApp.filter = function (e) {
         now = false;
     }
     // perform GET request
-    shareApp.getListings(itemName, category, dateAfter, now);
     $("#feed").empty();
     // Update data object
+
     // Render the results into the stream of data
 };
 
