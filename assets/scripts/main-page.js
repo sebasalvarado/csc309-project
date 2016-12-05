@@ -71,8 +71,8 @@ shareApp.filter = function (e) {
     var header = $(".container").find(".row").find("#selectionFilter");
     var itemName = header.find("#item").val();
     var category = header.find("#category").val();
-    var dateAfter = header.find("#postedAfter");
-    console.log(dateAfter.val());
+    var dateAfter = $(".container").find("#selectionFilter").find("#date").find("#postedAfter").val();
+    console.log(dateAfter);
     var now = header.find('#availNow:checked').val();
     if (typeof now == 'undefined') {
         now = false;
