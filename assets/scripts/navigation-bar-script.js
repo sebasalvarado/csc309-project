@@ -4,8 +4,9 @@ searchApp.init = function(){
   // Find the form
   $("#navigation").find("#submitId").submit(function(e){
     e.preventDefault();
-    var username = window.location.pathname.split("/")[1];
-    window.location.href = username + "/search";
+    var username ="/"+ window.location.pathname.split("/")[1] + "/search";
+    console.log(username);
+    window.location.replace(username);
   });
 }
 
