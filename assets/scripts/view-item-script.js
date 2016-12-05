@@ -64,6 +64,7 @@ function displayListing(response) {
 
 
 function redirectRequest() {
+
   var urlrequest = '/' + username + "/request/" + listingid.toString();
   console.log(urlrequest);
   window.location.href = urlrequest;
