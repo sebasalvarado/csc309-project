@@ -54,7 +54,7 @@ function listFilter(req,res,next){
   var date = req.query.date;
   var now = req.query.now;
   const results = [];
-
+  console.log(item);
   pg.connect(connectionString,(err,client,done) => {
     // Handle connection errors
     if (err) {
@@ -65,7 +65,16 @@ function listFilter(req,res,next){
 
     }
 
-    
+    const query = client.query("SELECT item, category, email, description, location from sharegoods.listing where item=$1 and category=$2 and to_date($3,'YYYY/MM/DD')"[item,category,date]);
+    // Stream results back one row at a time
+    query.on('row', (row) => {
+        results.push(row);
+    });
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
+        done();
+        return res.json(results);
+    });
   });
 
 }

@@ -79,14 +79,29 @@ shareApp.filter = function (e) {
     // perform GET request
     $("#feed").empty();
     // Update data object
-
+    var query = '/api/listing?item=' + itemName + "&category="+ category + "&date=" + dateAfter + "&now=" + now;
     // Render the results into the stream of data
+    shareApp.getlFilterListing(
+      function (dataListings) {
+          let listings = [];
+          for (let i = 0; i < dataListings.length; i++) {
+              let listing = {};
+              listing.title = dataListings[i].item;
+              listing.description = dataListings[i].description;
+              listing.category = dataListings[i].category;
+              listing.rating = 1;
+              listing.id = dataListings[i].listingid;
+
+              listings.push(listing);
+          }
+          shareApp.populateListings(listings);
+      },query);
 };
 
 // Function that sets the event callbacks to the form
 shareApp.init = function () {
     // Callback for the filtering form
-    $(".container").find(".row").find("#selectionFilter").submit(shareApp.filter);
+    //$(".container").find(".row").find("#selectionFilter").submit(shareApp.filter);
 
     //populate listings to be rendered
     shareApp.getListings(function (dataListings) {
