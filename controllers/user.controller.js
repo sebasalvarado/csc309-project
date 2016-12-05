@@ -121,7 +121,7 @@ function remove(req, res, next) {
 /** Query a user by a username **/
 function listUserName(req, res){
   // Get the username from query
-  var username = req.query.username;
+  var username = req.params.username;
   const results = [];
   pg.connect(connectionString, (err, client, done) => {
    // Handle connection errors

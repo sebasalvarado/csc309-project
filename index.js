@@ -72,6 +72,11 @@ app.get('/:username/main', function(req, res){
   res.render('pages/main.ejs', {username:req.params.username}); // Load main page
 });
 
+app.get('/:username/profile', function(req, res){
+  res.render('pages/profile.ejs', {username:req.params.username}); // Load main page
+});
+
+
 
 //log out
 app.get('/logout', function(req, res){
@@ -121,7 +126,6 @@ app.get('/admin/index/listing',function(req,res){
   res.render('pages/admin/index');
 
 });
-
 
 
 /* start the server */
