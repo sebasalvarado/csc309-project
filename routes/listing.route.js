@@ -6,7 +6,7 @@ const router = express.Router();
 
 /** GET list of all listings in the system**/
 router.route('/')
-  .get(listingCtrl.list)
+  .get(listingCtrl.list, listingCtrl.listFilter)
 /** POST Add a new listing **/
   .post(listingCtrl.create);
 

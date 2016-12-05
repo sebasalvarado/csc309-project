@@ -5,7 +5,7 @@ searchApp.init = function(){
   $("#navigation").find("#submitId").submit(function(e){
     e.preventDefault();
     var username = window.location.pathname.split("/")[1];
-    window.location.href = "http://localhost:3000/" + username + "/search";
+    window.location.href = username + "/search";
   });
 }
 

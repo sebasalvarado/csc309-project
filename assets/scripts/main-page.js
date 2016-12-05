@@ -72,6 +72,7 @@ shareApp.filter = function (e) {
     }
     // perform GET request
     shareApp.getListings(itemName, category, dateAfter, now);
+    $("#feed").empty();
     // Update data object
     // Render the results into the stream of data
 };
@@ -94,14 +95,9 @@ shareApp.init = function () {
             listing.id = dataListings[i].listingid;
 
             listings.push(listing);
-
         }
-
         shareApp.populateListings(listings);
-
-
     });
-
 };
 
 $(document).ready(function () {

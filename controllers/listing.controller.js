@@ -4,6 +4,9 @@ const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:
 
 function list(req, res, next) {
 
+    if(typeof req.query.item == "undefined"){
+      return next();
+    }
     const results = [];
     const id = req.params.listingID;
     pg.connect(connectionString, (err, client, done) => {
@@ -42,6 +45,28 @@ function list(req, res, next) {
         }
 
     });
+
+}
+
+function listFilter(req,res,next){
+  var item = req.query.item;
+  var category = req.query.category;
+  var date = req.query.date;
+  var now = req.query.now;
+  const results = [];
+
+  pg.connect(connectionString,(err,client,done) => {
+    // Handle connection errors
+    if (err) {
+
+        done();
+        console.log(err);
+        return res.status(500).json({success: false, data: err});
+
+    }
+
+    
+  });
 
 }
 
@@ -108,4 +133,4 @@ function remove(req, res, next) {
     });
 }
 
-export default {list, create, remove};
+export default {list, create, remove,listFilter};
