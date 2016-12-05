@@ -3,10 +3,11 @@ pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
 function list(req, res, next) {
-
-    if(typeof req.query.item == "undefined"){
+    if(typeof req.query.item != "undefined"){
+      console.log(req.query.item);
       return next();
     }
+    console.log("passed");
     const results = [];
     const id = req.params.listingID;
     pg.connect(connectionString, (err, client, done) => {
@@ -65,7 +66,7 @@ function listFilter(req,res,next){
 
     }
 
-    const query = client.query("SELECT item, category, email, description, location from sharegoods.listing where item=$1 and category=$2 and to_date($3,'YYYY/MM/DD')"[item,category,date]);
+    const query = client.query("SELECT item, category, email, description, location from sharegoods.listings where item=$1 and category=$2 and to_date($3,'YYYY/MM/DD') <= now()",[item,category,date]);
     // Stream results back one row at a time
     query.on('row', (row) => {
         results.push(row);
