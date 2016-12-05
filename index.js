@@ -68,7 +68,7 @@ app.get('/main', function (req,res){
    res.redirect('main/' + req.user.username);
 });
 
-app.get('/main/:username', function(req, res){
+app.get('/:username/main', function(req, res){
   res.render('pages/main.ejs', {username:req.params.username}); // Load main page
 });
 

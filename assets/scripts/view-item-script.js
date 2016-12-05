@@ -2,6 +2,9 @@
 var map;
 var url = window.location.href.split('/');
 var listingid = (url[url.length -1]);
+var username = window.location.pathname.split("/")[1];
+alert(username);
+
 
 /* Load google maps data, create map */
 function initMap() {
@@ -61,9 +64,10 @@ function displayListing(response) {
 
 
 function redirectRequest() {
-  var urlrequest = "/request/" + listingid.toString();
+
+  var urlrequest = '/' + username + "/request/" + listingid.toString();
   console.log(urlrequest);
-  location.replace(urlrequest);
+  window.location.href = urlrequest;
 
 }
 

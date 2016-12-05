@@ -11,9 +11,9 @@ function login(req, res, next){
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
                 if(user.admin){
-                    return res.redirect('/admin/main/' + user.username);
+                    return res.redirect('/admin');
                 }else{
-                    return res.redirect('/main/' + user.username);
+                    return res.redirect('/' + user.username + '/main/');
                 }
             });
         })
@@ -33,9 +33,9 @@ function signup(req, res, next){
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
                 if(user.admin){
-                    return res.redirect('/admin/main/' + user.username);
+                    return res.redirect('/admin');
                 }else{
-                    return res.redirect('/main/' + user.username);
+                    return res.redirect('/' + user.username + '/main/');
                 }
             });
         })

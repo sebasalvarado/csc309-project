@@ -31,7 +31,7 @@ shareApp.populateListings = function (listings) {
 
             let viewBtn = $('<Button>').text('View Item');
                 viewBtn.click(function(){
-                    const username = window.location.pathname.split("/")[2];
+                    const username = window.location.pathname.split("/")[1];
                     window.location.href = '/' + username+ "/view/" + listings[i].id;
                 });
 

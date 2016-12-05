@@ -71,7 +71,7 @@ function createUser(req, callback) {
 
 
 function loginRedirect(req, res, next) {
-    if (req.user) return res.status(401).redirect('main/' + req.user.username);
+    if (req.user) return res.status(401).redirect(req.user.username + '/main');
     return next();
 }
 
@@ -84,17 +84,6 @@ function loginRequired(req, res, next) {
     return next();
 }
 
-function adminRequired(req, res, next) {
-    if (!req.user) res.status(401).json({status: 'Please log in'});
-    return knex('users').where({username: req.user.username}).first()
-        .then((user) => {
-            if (!user.admin) res.status(401).json({status: 'You are not authorized'});
-            return next();
-        })
-        .catch((err) => {
-            res.status(500).json({status: 'Something bad happened'});
-        });
-}
 
 
 module.exports = {
@@ -103,6 +92,5 @@ module.exports = {
     loginRedirect,
     handleErrors,
     handleResponse,
-    loginRequired,
-    adminRequired
+    loginRequired
 };
