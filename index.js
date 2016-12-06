@@ -60,7 +60,19 @@ app.get('/signup', function (req, res) {
     res.render('pages/signup.ejs', {message: req.flash('signupMessage')});
 });
 
+/* Admin main page */
+app.get('/admin/main', function(req,res){
+  res.render('pages/admin/main',{username:req.user.username});
+});
+/* Admin detailed page */
+app.get('/admin/index/user', function(req,res){
+  res.render('pages/admin/index',{username:req.user.username});
+});
 
+app.get('/admin/index/listing',function(req,res){
+  res.render('pages/admin/index',{username:req.user.username});
+
+});
 
 app.get('/:username/main', function(req, res){
   res.render('pages/main.ejs', {username:req.user.username}); // Load main page
@@ -107,19 +119,7 @@ app.get('/:username/my-requests',function(req,res){
 app.get('/:username/requests',function(req,res){
   res.render('pages/requests',{username:req.user.username});
 })
-/* Admin main page */
-app.get('/admin', function(req,res){
-  res.render('pages/admin/main');
-});
-/* Admin detailed page */
-app.get('/admin/index/user', function(req,res){
-  res.render('pages/admin/index');
-});
 
-app.get('/admin/index/listing',function(req,res){
-  res.render('pages/admin/index');
-
-});
 
 
 /* start the server */

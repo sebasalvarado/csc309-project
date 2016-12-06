@@ -11,7 +11,7 @@ function login(req, res, next){
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
                 if(user.admin){
-                    return res.redirect('/admin');
+                    return res.redirect('/admin/main');
                 }else{
                     return res.redirect('/' + user.username + '/main/');
                 }
