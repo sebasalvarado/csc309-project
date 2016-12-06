@@ -83,13 +83,14 @@ function listFilter(req,res,next){
 function create(req, res, next) {
 
     const results = [];
+    console.log(req.body);
     const data = {
         email: req.body.email,
         phone: req.body.phone,
         item: req.body.item,
         category: req.body.category,
         description: req.body.description,
-        returndate: req.body.returnDate,
+        returndate: req.body.returndate,
         location: req.body.location
     };
 
