@@ -5,8 +5,27 @@ pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://nxlatahqfspior:LfDdATwlKEdEoDes7Yxfza0QR-@ec2-23-23-107-82.compute-1.amazonaws.com:5432/d5lrfb7jjdfu63';
 
 function list(req, res) {
-    console.log("HIT");
-    return res.send(200);
+  pg.connect(connectionString, (err, client, done) => {
+      // Handle connection errors
+      if (err) {
+
+          done();
+          console.log(err);
+          return res.status(500).json({success: false, data: err});
+
+      }
+      var results = [];
+      // SQL Query > Select Data
+      const query = client.query('SELECT * FROM ShareGoods.user;');
+      query.on('row', (row) => {
+          results.push(row);
+      });
+      // After all data is returned, close connection and return results
+      query.on('end', () => {
+          done();
+          return res.json(results);
+      });
+  });
 }
 
 function findUser(username, res, callback) {
